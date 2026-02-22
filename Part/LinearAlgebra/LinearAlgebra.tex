@@ -1,0 +1,206 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+\chapter{相似变换}\label{相似变换}
+相似变换，表征的是线性空间的某一线性映射在坐标变换前后的不同矩阵表示。
+因为相似变换是一逆一正的变换，结合张量理论，矩阵是$(1,1)$型张量在特定基底下的分量
+
+一个映射在不同基底下形式不同，最简单的形式肯定是对角矩阵，这样象和原象的元素就是一一对应关系了，由此我们引出相似对角化的概念，即把一个矩阵相似变换成对角矩阵
+
+根据相似对角化理论，一个矩阵相似对角化后的对角阵由特征值构成，相似因子由特征向量构成。进一步，如果矩阵的各特征向量正交，那么相似因子就是一个酉矩阵，相似对角化特殊化为酉对角化
+\[
+\text{相似对角化}\begin{cases}
+    \text{酉对角化}\begin{cases}
+        \text{正交对角化} \\
+        \text{其他}
+    \end{cases}\\
+    \text{其他}
+\end{cases}
+\]
+\begin{note}
+    \begin{enumerate}
+        \item 相似对角化的条件是$k$重特征值有$k$个线性无关的特征向量
+        \item 一个矩阵能酉对角化的条件是这个矩阵的互异特征值正交。因为相同特征值值对应的特征向量总能正交化。这种矩阵由正规矩阵表示
+        \item 正交对角化是酉对角化的特例，因为正交矩阵是实矩阵，所以矩阵的正交对角化的额外要求是特征向量为实向量（这也是正交矩阵各特征矩阵正交但不一定能正交对角化的原因）
+    \end{enumerate}
+\end{note}
+
+\section{谱分解定理}\label{谱分解定理}
+\begin{theorem}[谱分解定理]
+    若$A$能相似对角化，则$A=\sum_i \lambda_i A_i$
+    其中$\lambda_i$为矩阵$A$的特征值，$A_i$满足下列三个性质
+    \[
+        \begin{cases}
+            A_i^2=A_i \\
+            A_iA_j=0\;(i\neq j)\\
+            \sum_i A_i=I
+        \end{cases}
+    \]
+\end{theorem}
+\begin{enumerate}
+    \item 上述定理的证明借助相似对角化的定义，把$A$用对角阵和相似因子表示出来，再把对角矩阵分解就能得证，$A_i$的性质借助$A_i$的定义不难得出
+    \[
+    A=P\Lambda P^{-1}=\sum_i \lambda_i P E_i P^{-1}=\sum_i \lambda_i A_i
+    \]
+    \item 注意这里的$E_i$并不是单位阵，而是对角线上第$i$个元素为$1$且其余元素全为$0$的矩阵。
+    \item 把$P$矩阵的各列表示成$\mathbf{v}_i$，把$P^{-1}$矩阵的各行表示成$\mathbf{\omega}_i^T$，那么有
+    \[
+    A_i = P E_i P^{-1} = \begin{bmatrix}
+        0\cdots\mathbf{v}_i\cdots 0
+    \end{bmatrix}\begin{bmatrix}
+        \mathbf{\omega}_1^T \\ \vdots \\ \mathbf{\omega}_i^T \\ \vdots \\ \mathbf{\omega}_n^T
+    \end{bmatrix}=\mathbf{v}_i\mathrm{\omega}_i^T
+    \]
+    \begin{note}
+    如果$A$可以酉相似化，不难证明$A_i=\mathbf{v}_i\mathbf{v}_i^{\dagger}$
+    
+    在量子力学中则表示为$A=\sum_i \lambda_i \ket{\alpha_i}\bra{\alpha_i}$，其中$\ket{\alpha_i}$是对应于特征值$\lambda_i$的本征矢。
+    \end{note}
+    \item 借助谱分解定理，可以方便的计算矩阵的函数，我们这里关注厄米矩阵
+    \[\begin{split}
+        f(A)& =\sum_i f(\lambda_i \ket{\alpha_i}\bra{\alpha_i})\\
+        &=\sum_i f(P\lambda_i \Lambda P^{-1})\\
+        &=\sum_i Pf(\lambda_i \Lambda )P^{-1}\\
+        &=\sum_i f(\lambda_i)P \Lambda P^{-1}= \sum_i f(\lambda_i) \ket{\alpha_i}\bra{\alpha_i}
+    \end{split}
+    \]
+    \begin{note}
+        这里的$\Lambda$是第一个元素为$1$，其余元素为$0$的对角矩阵。因为$\ket{\alpha_i}\bra{\alpha_i}$的特征值是$1$和$0$
+    \end{note}
+\end{enumerate}
+
+\chapter{特征值与特征向量}\label{特征值与特征向量}
+\begin{enumerate}
+    \item $n$维矩阵在复数域上有$n$个特征值，这是代数基本定理保证的
+    \item 考虑简并，$k$重特征值至多有$k$个线性无关的特征向量
+    \item 一个特征值对应的特征向量构成一个线性空间（同一特征值的特征向量的线性组合仍是这一特征值的特征向量），称为本征子空间（其实就是特征方程的零空间），它的维数（线性无关的特征向量的个数，即线性无关的解的个数）由这个特征值对应的特征矩阵的秩决定，即$d=n-r$
+\end{enumerate}
+
+\chapter{复线性空间}\label{复线性空间}
+\begin{enumerate}
+    \item 实线性空间与复线性空间的区别，根源来自内积的定义不同。前者内积是分量的平方和，后者是分量的模的平方和。这种差异是为了保证复向量的内积是实数（因为向量与自身的内积是向量的长度的平方）（当然这里的内积是定义在正交基底下的）
+    \item 将上述差异写成表达式，就是把转置换成共轭转置，对于不涉及正交的定理，自然不会改变（比如矩阵相似对角化的条件），而对于涉及正交的定理，也不是简单的直接推广，不明确最好不要瞎用
+    \item 作为对应，复线性空间的共轭转置性质和实线性空间的转置性质类似。当然复线性空间也有转置的概念，性质和实线性空间一样
+    \item 转置，共轭转置，取逆三个操作顺序可以互换
+    \item 实对称阵对应厄米矩阵，正交阵对应酉矩阵
+    \begin{note}
+        在\ref{正规矩阵}小节，我们会看到，从对角化的角度，实对称阵是一个极特殊的矩阵，不能完全说对应厄米矩阵
+    \end{note}
+    \end{enumerate}
+
+\section{正规矩阵}\label{正规矩阵}
+\begin{definition}
+    矩阵$A$称为正规矩阵，若$A$满足$AA^\dagger=A^\dagger A$
+\end{definition}
+由此定义可知：正规矩阵和它的伴随矩阵是可交换的，我们可以简单对正规矩阵做个分类
+\[
+    \text{正规矩阵}\begin{cases}
+        \text{厄米矩阵}\begin{cases}
+            \text{实对称阵} \\
+            \text{其他}
+        \end{cases} \\
+        \text{酉矩阵}\begin{cases}
+            \text{正交阵} \\
+            \text{其他}
+        \end{cases} \\
+        \text{其他}
+    \end{cases}
+\]
+
+正规矩阵有三个重要性质，如下所示[证明由deepseek提供]
+\begin{theorem}
+    如果 \( A \) 是正规矩阵，且 \( \mathbf{v} \) 是 \( A \) 的对应于特征值 \( \lambda \) 的特征向量，则 \( \mathbf{v} \) 也是 \( A^\dagger \) 的对应于特征值 \( \overline{\lambda} \) 的特征向量
+\end{theorem}
+\begin{proof}
+    首先考虑矩阵 \( B = A - \lambda I \).
+   \[
+   B^\dagger B = (A^\dagger - \overline{\lambda} I)(A - \lambda I) = A^\dagger A - \overline{\lambda} A - \lambda A^\dagger + |\lambda|^2 I
+   \]
+   \[
+   B B^\dagger = (A - \lambda I)(A^\dagger - \overline{\lambda} I) = A A^\dagger - \overline{\lambda} A - \lambda A^\dagger + |\lambda|^2 I
+   \]
+
+   由于 \( A^\dagger A = A A^\dagger \)，所以 \( B^\dagger B = B B^\dagger \)，即 \( B \) 是正规矩阵
+
+    接着对于任意向量 \( \mathbf{x} \)，有：
+   \[
+   \|B \mathbf{x}\|^2 = \langle B \mathbf{x}, B \mathbf{x} \rangle = \mathbf{x}^\dagger B^\dagger B \mathbf{x}
+   \]
+   \[
+   \|B^\dagger \mathbf{x}\|^2 = \langle B^\dagger \mathbf{x}, B^\dagger \mathbf{x} \rangle = \mathbf{x}^\dagger B B^\dagger \mathbf{x}
+   \]
+
+   由于 \( B^\dagger B = B B^\dagger \)，所以 \( \|B \mathbf{x}\| = \|B^\dagger \mathbf{x}\| \) 对所有 \( \mathbf{x} \) 成立
+
+    最后特别地，对于特征向量 \( \mathbf{v} \)（满足 \( A \mathbf{v} = \lambda \mathbf{v} \)，即 \( B \mathbf{v} = 0 \)）：
+   \[
+   \|B^\dagger \mathbf{v}\| = \|B \mathbf{v}\| = 0
+   \]
+
+   这意味着 \( B^\dagger \mathbf{v} = 0 \)，即：
+   \[
+   (A^\dagger - \overline{\lambda} I) \mathbf{v} = 0 \quad \Rightarrow \quad A^\dagger \mathbf{v} = \overline{\lambda} \mathbf{v}
+   \]
+\end{proof}
+\begin{theorem}
+    如果 \( A \) 是正规矩阵，且 \( \lambda_1 \) 和 \( \lambda_2 \) 是 \( A \) 的两个不同的特征值，对应的特征向量分别为 \( \mathbf{v}_1 \) 和 \( \mathbf{v}_2 \)，则 \( \mathbf{v}_1 \) 和 \( \mathbf{v}_2 \) 正交
+\end{theorem}
+
+\begin{proof}
+    易知：
+    \[
+    A \mathbf{v}_1 = \lambda_1 \mathbf{v}_1, \quad A \mathbf{v}_2 = \lambda_2 \mathbf{v}_2
+    \]
+    \[
+    A^\dagger \mathbf{v}_1 = \overline{\lambda_1} \mathbf{v}_1, \quad A^\dagger \mathbf{v}_2 = \overline{\lambda_2} \mathbf{v}_2
+    \]
+
+    考虑内积 \( \langle A \mathbf{v}_1, \mathbf{v}_2 \rangle \)：
+    一方面：
+     \[
+     \langle A \mathbf{v}_1, \mathbf{v}_2 \rangle = \langle \lambda_1 \mathbf{v}_1, \mathbf{v}_2 \rangle = \overline{\lambda_1} \langle \mathbf{v}_1, \mathbf{v}_2 \rangle
+     \]
+
+    另一方面，利用内积的性质 \( \langle A \mathbf{u}, \mathbf{v} \rangle = \langle \mathbf{u}, A^\dagger \mathbf{v} \rangle \)：
+     \[
+     \langle A \mathbf{v}_1, \mathbf{v}_2 \rangle = \langle \mathbf{v}_1, A^\dagger \mathbf{v}_2 \rangle = \langle \mathbf{v}_1, \overline{\lambda_2} \mathbf{v}_2 \rangle = \overline{\lambda_2} \langle \mathbf{v}_1, \mathbf{v}_2 \rangle
+     \]
+  
+    将两者相等：
+    \[
+    \overline{\lambda_1} \langle \mathbf{v}_1, \mathbf{v}_2 \rangle = \overline{\lambda_2} \langle \mathbf{v}_1, \mathbf{v}_2 \rangle
+    \]
+    \[
+    (\overline{\lambda_1} - \overline{\lambda_2}) \langle \mathbf{v}_1, \mathbf{v}_2 \rangle = 0
+    \]
+
+    由于 \( \lambda_1 \neq \lambda_2 \)，所以 \( \overline{\lambda_1} - \overline{\lambda_2} \neq 0 \)，因此
+    \[
+    \langle \mathbf{v}_1, \mathbf{v}_2 \rangle = 0
+    \]
+    即 \( \mathbf{v}_1 \) 和 \( \mathbf{v}_2 \) 正交
+\end{proof}
+
+\begin{theorem}
+    矩阵 \( A \) 是正规矩阵当且仅当它能酉相似对角化
+\end{theorem}
+这个定理不作证明
+
+由上述定理，我们立马能想到，在实线性空间，实正规矩阵的互异特征值对应的特征矢量正交，那理应能推导出实正规矩阵能正交对角化，但显然不是（正交矩阵就是实正规矩阵，但不一定能正交对角化）。关键点我们已在前文提到，实正规矩阵的特征向量不一定是实向量，那它的相似因子也不一定是实矩阵，但正交矩阵要求是实矩阵，所以实正规矩阵不一定能正交对角化，正能退而求其次，一定能酉对角化
+
+实对称阵特殊在所有特征值都是实数，自然特征向量也是实向量，相似因子就能是正交矩阵了。从这个角度，实对称阵和厄米矩阵是不对等的（两者对等意味着正交矩阵能正交对角化，但显然不一定）
+
+\section{厄米矩阵}\label{厄米矩阵}
+\begin{enumerate}
+    \item 实线性空间中对称矩阵性质特殊，它满足$A=A^{\mathrm{T}}$，进而可推出它的互异特征值对应的特征向量正交。在复线性空间中，自然可以定义满足$A=A^\dagger$的矩阵，显然它的互异特征值对应的特征向量也正交。这种矩阵称为厄米矩阵（根据上文的\ref{正规矩阵}小节，显然厄米矩阵只是这类矩阵的子集）
+    \item 厄米矩阵的本征值均为实数
+    \item 厄米矩阵的一组线性无关的本征矢能构成线性空间的基（因为它能相似对角化），进过正交化处理，厄米矩阵的本征矢能构成一组正交基
+    \item 厄米矩阵能通过酉变换进行对角化，根据\ref{谱分解定理}我们有$A=\sum \lambda_i \ket{\alpha_i}\bra{\alpha_i}$
+\end{enumerate}
+
+\section{酉矩阵}\label{酉矩阵}
+\begin{enumerate}
+    \item 正交阵和酉矩阵的特征值的模是都为$1$，特征向量的模都为$1$，两者的行列式的绝对值都为$1$
+    \item 正交阵和酉矩阵都保内积不变。其实这里的保不变是强制内积为正交基下的形式（就是上面的定义）后，再进行坐标变换，讨论内积不变。在张量分析视角下，内积由度规和分量决定，是标量，坐标变换下自然是一定不变的，而正交阵和酉矩阵的特殊之处在于保证了度规形式不变（相对于正交基不变）
+\end{enumerate}
+\end{document}
