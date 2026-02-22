@@ -1,0 +1,36 @@
+# --- LaTeX intermediate files ---
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+*.nav
+*.snm
+*.vrb
+
+# --- Build directories ---
+build/
+out/
+_build/
+
+# --- Compiled output ---
+*.pdf
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
