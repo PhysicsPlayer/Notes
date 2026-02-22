@@ -1,0 +1,83 @@
+%    Copyright 2026 李祯
+
+%    Licensed under the Apache License, Version 2.0 (the "License");
+%    you may not use this file except in compliance with the License.
+%    You may obtain a copy of the License at
+
+%        http://www.apache.org/licenses/LICENSE-2.0
+
+%    Unless required by applicable law or agreed to in writing, software
+%    distributed under the License is distributed on an "AS IS" BASIS,
+%    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%    See the License for the specific language governing permissions and
+%    limitations under the License.
+
+\documentclass[lang=cn,20pt,scheme=chinese,section]{elegantbook}
+\linespread{1.75}
+\title{涓涓细流}
+\author{李祯@JLU}
+\date{\zhtoday}
+\cover{Figure/cover.jpg}
+\setcounter{tocdepth}{3}
+
+\usepackage{array}
+\usepackage{braket}
+\usepackage{subfiles}
+\usepackage{epigraph}
+\usepackage{perpage}
+\MakePerPage{footnote}
+
+\begin{document}
+\maketitle
+\frontmatter
+\tableofcontents
+\mainmatter
+
+% 线性代数
+\part{线性代数}
+\subfile{Part/LinearAlgebra/LinearAlgebra.tex}
+
+% 微分几何
+\part{微分几何}
+\subfile{Part/DifferentialGeometry/DifferentialGeometry.tex}
+
+
+% 量子力学
+\part{量子力学}
+\chapter{观念的转变}
+\subfile{Part/QuantumMechanics/观念的转变.tex}
+\chapter{数学基础}
+\subfile{Part/QuantumMechanics/数学基础.tex}
+\chapter{量子力学的基本原理}
+\subfile{Part/QuantumMechanics/量子力学的基本原理.tex}
+\chapter{基本原理的简单运用}
+\subfile{Part/QuantumMechanics/基本原理的简单运用.tex}
+\chapter{一维谐振子}
+\subfile{Part/QuantumMechanics/一维谐振子.tex}
+\chapter{角动量理论}
+\subfile{Part/QuantumMechanics/角动量理论.tex}
+\chapter{中心势场}
+\subfile{Part/QuantumMechanics/中心势场.tex}
+\chapter{自旋}
+\subfile{Part/QuantumMechanics/自旋.tex}
+\chapter{角动量的耦合}
+\subfile{Part/QuantumMechanics/角动量的耦合.tex}
+\chapter{定态微扰理论}
+\subfile{Part/QuantumMechanics/定态微扰理论.tex}
+
+\part{热力学与统计物理学}
+\chapter{热统在干什么}
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/热统在干什么.tex}
+\chapter{热力学定律与热力学过程}
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/热力学定律与热力学过程.tex}
+\chapter{均匀热力学系统的性质}
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/均匀热力学系统的性质.tex}
+\chapter{单元平衡复相系}
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/单元平衡复相系.tex}
+\chapter{多元平衡复相系}
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/多元平衡复相系.tex}
+\chapter{系综理论}
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/系综理论.tex}
+\chapter{一些具体模型}
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/一些具体模型.tex}
+\end{document}
