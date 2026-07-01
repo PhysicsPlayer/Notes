@@ -1,15 +1,13 @@
-%%%%%%%%%%%%%%%%%%%%%%
-%% start of file `elegantbook.cls'.
-%% Copyright 2013-2022 ElegantLaTeX (elegantlatex2e@gmail.com)
-%%
-%% This work may be distributed and/or modified freely
-%% available at https://github.com/ElegantLaTeX/ElegantBook
-% 
-%%%%%%%%%%%%%%%%%%%%%
-% % !Mode:: "TeX:UTF-8"
+% -----------------------------------------------------------------------------
+% Start of file `elegantbook.cls'.
+% Copyright 2013-2022 ElegantLaTeX (elegantlatex2e@gmail.com)
+% Copyright 2026-     ElegantLaTeX (maintained by ranwang.osbert@outlook.com)
+% This work may be distributed and/or modified under the conditions of the LaTeX Project Public License,
+% either version 1.3c of this license or (at your option) any later version.
+% It is available at https://github.com/ElegantLaTeX/ElegantBook
+% -----------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elegantbook}[2022/12/31 v4.5 ElegantBook document class]
-
+\ProvidesClass{elegantbook}[2026/05/01 v4.7 ElegantBook document class]
 
 %%%
 \RequirePackage{kvoptions}
@@ -399,7 +397,7 @@
 
 
 %%   章节设置
-\RequirePackage[center,pagestyles]{titlesec}
+\RequirePackage[center]{titlesec}
 \RequirePackage[title,titletoc,header]{appendix}
 
 
@@ -428,7 +426,7 @@
   \newcommand{\institutename}{\citshape 组织：}
   \newcommand{\datename}{\citshape 时间：}
   \newcommand{\versionname}{\citshape 版本：}
-  \newcommand{\notename}{注}
+  \newcommand{\notename}{笔记}
   \renewcommand*{\proofname}{证明}
   \newcommand{\definitionname}{定义}
   \newcommand{\theoremname}{定理}
@@ -437,7 +435,7 @@
   \newcommand{\lemmaname}{引理}
   \newcommand{\propositionname}{命题}
   \newcommand{\corollaryname}{推论}
-  \newcommand{\examplename}{示例} %
+  \newcommand{\examplename}{例题} %
   \newcommand{\instancename}{示例} %
   \newcommand{\problemname}{问题} % 问题
   \newcommand{\exercisename}{练习} % 练习=习题
@@ -1275,7 +1273,7 @@
 % \renewcommand{\headrule}{}
 \fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}\renewcommand{\headrule}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\, #1}{}}
-\renewcommand{\chaptermark}[1]{\markboth{\xchaptertitle\, #1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\IfAppendix{\appendixname\;\thechapter\, #1}{\xchaptertitle\, #1}}{}}
 
 
 \renewcommand*{\maketitle}{%
@@ -1298,8 +1296,8 @@
       \includegraphics[trim=0 26bp 0 26bp,clip=true, width=\linewidth]{example-image}
     \fi
   }{\relax}
-  \setlength{\fboxsep}{0pt}
-  \colorbox{coverlinecolor}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}}
+  \vskip-\baselineskip
+  {\color{coverlinecolor}\hrule \@width \linewidth \@height .5in}
   \vfill
   \vskip-2ex
   \hspace{2em}
