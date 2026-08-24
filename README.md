@@ -1,3 +1,4 @@
+## 项目简介
 这是我写物理感想的地方，不特别记录知识点，更多记录整体逻辑和零散的感悟
 
 文档采取多文档编译模式，主文档是`main.tex`，在里面指明章节标题和引用子文档。子文档位于`./Part/`文件夹下，此文件夹下一个文件夹表示一个专题（即一本独立的书），在一个专题文件夹内，一个文档表示一个章节，不写章节序号，只给出章节题目。部分专题文件夹下，一个文档即表示一本书
@@ -7,6 +8,10 @@
 交叉引用正常书写，无需额外操作（但只有在编译主文档是才有效，子文档编译不出来）
 
 ---
+
+## 编译指南
+调用`xelatex`连续编译两次即可，推荐在[Visual Studio Code](https://code.visualstudio.com/)中借助[LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop)插件辅助编译
+
 ## TODO
 
 - [x] 线性代数
@@ -33,8 +38,14 @@
 	- [ ] 均匀热力学系统的性质
 	- [ ] 单元平衡复相系
 	- [ ] 多元平衡复相系
-	- [ ] 系综理论
-	- [ ] 一些具体模型
+	- [ ] 系综理论基本原理
+	- [ ] 正则系综
+	- [ ] 正则系综的若干应用
+	- [ ] 巨正则系综
+	- [ ] 量子理想气体
+---
+
+本项目采用$\text{Elegant}\LaTeX$项目中的[ElegantBook](https://github.com/ElegantLaTeX/ElegantBook)作为模板
 
 ---
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)

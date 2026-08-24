@@ -12,7 +12,7 @@
 %    See the License for the specific language governing permissions and
 %    limitations under the License.
 
-\documentclass[lang=cn,20pt,scheme=chinese,section]{elegantbook}
+\documentclass[thmcnt=section,lang=cn,20pt,scheme=chinese]{elegantbook}
 \linespread{1.75}
 \title{涓涓细流}
 \author{李祯@JLU}
@@ -25,6 +25,12 @@
 \usepackage{subfiles}
 \usepackage{epigraph}
 \usepackage[perpage,flushmargin,stable]{footmisc}
+\usepackage{newunicodechar}
+\newunicodechar{。}{.}
+\usepackage{xeCJKfntef}
+\xeCJKsetup{underdot/symbol=\textbullet}
+\usepackage{float}
+\usepackage{extarrows}
 
 \begin{document}
 \maketitle
@@ -76,7 +82,13 @@
 
 \subfile{Part/ThermodynamicsAndStatisticalPhysics/多元平衡复相系.tex}
 
-\subfile{Part/ThermodynamicsAndStatisticalPhysics/系综理论.tex}
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/系综统计基本原理.tex}
 
-\subfile{Part/ThermodynamicsAndStatisticalPhysics/一些具体模型.tex}
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/正则系综.tex}
+
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/正则系综的若干应用.tex}
+
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/巨正则系综.tex}
+
+\subfile{Part/ThermodynamicsAndStatisticalPhysics/量子理想气体.tex}
 \end{document}
