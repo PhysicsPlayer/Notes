@@ -38,16 +38,17 @@
 	- [ ] 均匀热力学系统的性质
 	- [ ] 单元平衡复相系
 	- [ ] 多元平衡复相系
-	- [ ] 系综理论基本原理
-	- [ ] 正则系综
+	- [x] 系综理论基本原理
+	- [x] 正则系综
 	- [ ] 正则系综的若干应用
 	- [ ] 巨正则系综
 	- [ ] 量子理想气体
 ---
+## 文档模板
 
 本项目采用$\text{Elegant}\LaTeX$项目中的[ElegantBook](https://github.com/ElegantLaTeX/ElegantBook)作为模板
 
 ---
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+## LICENCE
 
 本项目采用 Apache-2.0 许可协议，详见 [LICENSE](./LICENSE) 与 [NOTICE](./NOTICE)。
