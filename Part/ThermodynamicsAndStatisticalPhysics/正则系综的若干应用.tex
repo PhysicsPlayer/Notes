@@ -149,9 +149,11 @@
 \begin{equation}
     Z_1=\frac{V}{\lambda_{\text{th}}^3}\qquad \lambda_{\text{th}}=\hbar\sqrt{\frac{2\pi}{m\k T}}
 \end{equation}
-在巨正则系综部分我们会看到，经典理想气体满足非简并极限的本质就是\(n\ll n_{\text{Q}}\)或者说\(n\lambda_{\text{th}}^3\ll 1\)。
-
-有意思的是，当自由粒子满足非简并条件时，其一定满足高温条件。我们把非简并条件的两边取\(\frac{2}{3}\)次幂，可得
+在巨正则系综部分我们会看到，经典理想气体满足非简并极限的本质就是
+\begin{equation}
+    n\ll n_{\text{Q}}\quad\text{或者说}\quad n\lambda_{\text{th}}^3\ll 1
+\end{equation}
+我们称这个条件为理想气体的非简并条件。有意思的是，当理想气体满足非简并条件时，其一定满足高温条件。我们把非简并条件的两边取\(\frac{2}{3}\)次幂，可得
 \begin{equation}
     T\gg\frac{2\pi\hbar^2N^{\frac{2}{3}}}{mL^2\k}
 \end{equation}
@@ -159,7 +161,7 @@
 \begin{equation}
     \frac{2\pi\hbar^2N^{\frac{2}{3}}}{mL^2\k}\frac{2mL^2\k}{\hbar^2\pi^2}=\frac{4N^{\frac{2}{3}}}{\pi}\gg 1\Longrightarrow \frac{2\pi\hbar^2N^{\frac{2}{3}}}{mL^2\k}\gg \frac{\hbar^2\pi^2}{2mL^2\k}
 \end{equation}
-可以看到，对于经典理想气体，它能被看成经典理想气体这一物理上的近似比计算单粒子配分函数时把求和变成积分这一数学近似手段更重要。实际上后文我们处理量子理想气体时，非简并条件已不再满足，但我们还会使用把求和变积分这一数学近似。
+可以看到，对于经典理想气体，它能被看成经典理想气体这一物理模型上的近似比计算单粒子配分函数时把求和变成积分这一数学近似手段更重要。实际上后文我们处理量子理想气体时，非简并条件已不再满足，但我们还会使用把求和变积分这一数学近似。
 
 \subsection{经典理想气体的态函数}
 经典理想气体系统的配分函数由\(Z=\frac{1}{N!}Z_1^{N}\)给出，即
@@ -201,21 +203,26 @@
     \begin{split}
         \mu=-\k T\pdv{\ln Z}{N}&=-\k T\pdv{N}(N\ln Z_1-N\ln N+N) \\
         &=-\k T(\ln Z_1-\ln N) \\
-        &=-\k T\ln\frac{Z_1}{N}=-\k T\ln\left[\frac{V}{N\hbar^3}\left(\frac{m\k T}{2\pi}\right)^{\frac{3}{2}}\right]
+        &=-\k T\ln\frac{Z_1}{N} \\
+        &=-\k T\ln\left[\frac{V}{N\hbar^3}\left(\frac{m\k T}{2\pi}\right)^{\frac{3}{2}}\right]
     \end{split}
 \end{equation}
-上式中取对数的\(\frac{Z_1}{N}=\frac{Vn_{\text{Q}}}{N}=\frac{n_{\text{Q}}}{n}\gg 1\)，因此理想气体化学势为负，这也是可以预见的。根据热力学基本微分方程\(\dd U=T\dd S-p\dd V+\mu\dd N\)可得\(\mu=\left(\pdv{U}{N}\right)_{S,V}\)。我们假想两个系统\(A\)和\(B\)，两者的熵和体积完全相同而\(B\)系统比\(A\)系统多一个粒子。倘若两个系统能量相等，因为\(B\)系统多一个粒子，它的微观状态数会更多即熵更大，但我们要求两个系统的熵相同，因此\(B\)系统的能量一定要小于\(A\)系统，所以化学势必然是负的。
+上式中取对数的\(\frac{Z_1}{N}=\frac{Vn_{\text{Q}}}{N}=\frac{n_{\text{Q}}}{n}\gg 1\)，因此经典理想气体化学势为负，这也是可以预见的。根据热力学基本微分方程\(\dd U=T\dd S-p\dd V+\mu\dd N\)可得\(\mu=\left(\pdv{U}{N}\right)_{S,V}\)。我们假想两个经典理想气体\footnote{这意味着气体的温度足够高，巨正则系综部分我们会研究费米理想气体，它的低温化学势是正的}系统\(A\)和\(B\)，两者的熵和体积完全相同而\(B\)系统比\(A\)系统多一个粒子。倘若两个系统能量相等，因为\(B\)系统多一个粒子，它的微观状态数会更多即熵更大\footnote{上一章我们计算过经典理想气体的微观状态数，读者可定量分析一下}，但我们要求两个系统的熵相同，因此\(B\)系统的能量一定要小于\(A\)系统，所以化学势必然是负的。
 \subsection{双原子气体的热容}
 
 本节我们要扩展我们的研究对象，研究更复杂的气体分子，双原子分子。原子物理课程学习过双原子分子的振转光谱，所以对于双原子分子，我们要考虑它的平动、振动和转动。我们的统计依旧从单粒子配分函数开始。为了让我们能够继续讨论这个话题，我们要假设双原子分子的这三种运动是相互独立的，也就是说双原子分子的平动不会改变它的转动、转动不会改变它的振动等等。仿照上一章组合配分函数的思路\footnote{从这些推导中读者应该能感受到，对于系统的不同成分，配分函数是这些成分的乘积，而热力学量的广延性要求结果是各成分的和，因此对配分函数取对数才可以得到热力学量是不意外的}，我们可以把单粒子配分函数拆成三个子配分函数。
 
 假设双原子分子位于\(s\)量子态时，表征其平动、振动、转动的量子数分别为\(n_{\text{平}},n_{\text{振}},n_{\text{转}}\)，那么分子的能量就是\(E_s=E_{n_{\text{平}}}+E_{n_{\text{振}}}+E_{n_{\text{转}}}\)。三种运动的独立性意味着三种量子数毫无关系，那么
 \begin{equation}
-    Z_1=\sum_s \mathrm{e}^{-\beta E_s}=\sum_{n_{\text{平}},n_{\text{振}},n_{\text{转}}}\mathrm{e}^{-\beta E_{n_{\text{平}}}}\mathrm{e}^{-\beta E_{n_{\text{振}}}}\mathrm{e}^{-\beta E_{n_{\text{转}}}}=Z_{\text{平动}}Z_{\text{振动}}Z_{\text{转动}}
+    \begin{split}
+        Z_1=\sum_s \mathrm{e}^{-\beta E_s}&=\sum_{n_{\text{平}},n_{\text{振}},n_{\text{转}}}\mathrm{e}^{-\beta E_{n_{\text{平}}}}\mathrm{e}^{-\beta E_{n_{\text{振}}}}\mathrm{e}^{-\beta E_{n_{\text{转}}}} \\
+        &=\sum_{n_{\text{平}}}\mathrm{e}^{-\beta E_{n_{\text{平}}}}\sum_{n_{\text{振}}}\mathrm{e}^{-\beta E_{n_{\text{振}}}}\sum_{n_{\text{转}}}\mathrm{e}^{-\beta E_{n_{\text{转}}}} \\
+        &=Z_{\text{平动}}Z_{\text{振动}}Z_{\text{转动}}
+    \end{split}
 \end{equation}
 不急于计算三种配分函数，我们先求热力学量的表达式，本节主要关注定容热容，不难想到热容应是这三部分的贡献之和。我们考虑的仍是经典理想气体，因此配分函数依旧是\(Z=\frac{1}{N!}Z_1^N\)，这给出内能公式
 \begin{equation}
-    U=-\pdv{\ln Z}{\beta}=-N\pdv{\ln Z_1}{\beta}=-N\pdv{\ln Z_{\text{平动}}}{\beta}-N\pdv{\ln Z_{\text{振动}}}{\beta}-N\pdv{\ln Z_{\text{转动}}}{\beta}
+    U=-\pdv{\ln Z}{\beta}=-N\pdv{\ln Z_1}{\beta}=-N\pdv{\ln Z_{\text{平动}}}{\beta}-N\pdv{\ln Z_{\text{振动}}}{\beta}-N\pdv{\ln Z_{\text{转动}}}{\beta}=U_{\text{平动}}+U_{\text{振动}}+U_{\text{转动}}
 \end{equation}
 显然，热容就是上述三项对温度的导数，即\(C_V=(C_V)_{\text{平动}}+(C_V)_{\text{振动}}+(C_V)_{\text{转动}}\)。我们来逐项计算。
 
@@ -225,7 +232,11 @@
     (C_V)_{\text{平动}}=\frac{3}{2}N\k
 \end{equation}
 
-我们假设双原子分子的振动等同于谐振子的振动，那么振动配分函数就是谐振子的单粒子配分函数\(Z_{\text{振动}}=\mathrm{e}^{-\frac{1}{2}\beta\hbar\omega}\frac{1}{1-\mathrm{e}^{-\beta\hbar\omega}}\)。先计算它的内能
+我们假设双原子分子的振动等同于谐振子的振动，那么振动配分函数就是谐振子的单粒子配分函数
+\begin{equation}
+    Z_{\text{振动}}=\mathrm{e}^{-\frac{1}{2}\beta\hbar\omega}\frac{1}{1-\mathrm{e}^{-\beta\hbar\omega}}
+\end{equation}
+先计算它的内能
 \begin{equation}
     \begin{split}
         U_{\text{振动}}=-N\pdv{\ln Z_{\text{振动}}}{\beta}&=-N\pdv{\beta}\left[-\frac{1}{2}\beta\hbar\omega-\ln(1-\mathrm{e}^{-\beta\hbar\omega})\right] \\
@@ -241,11 +252,15 @@
         &=N\k \left(\frac{\theta_{\mathrm{v}}}{T}\right)^2\frac{\mathrm{e}^{\theta_{\mathrm{v}}/T}}{(\mathrm{e}^{\theta_{\mathrm{v}}/T}-1)^2}\qquad \theta_{\mathrm{v}}=\frac{\hbar\omega}{\k}
     \end{split}
 \end{equation}
-上式倒数第二步的化简使用了\(\frac{1}{\k T^2}=\k \beta^2\)。其中定义的\(\theta_{\mathrm{v}}\)被称为振动特征温度。我们先对上述结果做些极限分析。首先分析高温极限即\(\beta\hbar\omega\ll 1\)，此时\(T\gg\theta_{\mathrm{v}}\)。对指数函数泰勒展开\footnote{分子的指数近似为1而分母的指数近似为\(\frac{\theta_{\mathrm{v}}}{T}\)，我们后文还会遇到这种指数函数除以指数函数的近似，也是这样的近似方法}易得\((C_V)_{\text{振动}}\approx N\k\)为定值。接着分析低温极限即\(\beta\hbar\omega\gg 1\)此时\( T\ll\theta_{\mathrm{v}}\)，分母上的1可以略去，即
+上式倒数第二步的化简使用了\(\frac{1}{\k T^2}=\k \beta^2\)。其中定义的\(\theta_{\mathrm{v}}\)被称为振动特征温度。我们先对上述结果做些极限分析。首先分析高温极限即\(\beta\hbar\omega\ll 1\)，此时\(T\gg\theta_{\mathrm{v}}\)。对指数函数泰勒展开\footnote{这里的泰勒展开分子取零级近似而分母取一级近似，如果都取一级近似会得到\((C_V)_{\text{振动}}\approx N\k \left(1+\frac{\theta_{\mathrm{v}}}{T}\right)\)这也能得到高温极限热容近似为定值的结论}易得
+\begin{equation}
+    (C_V)_{\text{振动}}\approx N\k \left(\frac{\theta_{\mathrm{v}}}{T}\right)^2\frac{1}{\left(\frac{\theta_{\mathrm{v}}}{T}\right)^2}=N\k
+\end{equation}
+即高温极限下，振动热容为定值。接着分析低温极限即\(\beta\hbar\omega\gg 1\)此时\( T\ll\theta_{\mathrm{v}}\)，分母上的1可以略去，即
 \begin{equation}
     (C_V)_{\text{振动}}\approx N\k\left(\frac{\theta_{\mathrm{v}}}{T}\right)^2\mathrm{e}^{-\frac{\theta_{\mathrm{v}}}{T}}
 \end{equation}
-容易看出，随着温度降低，振动热容指数收敛为0。注意这和平动热容是显著不同的：这不仅意味着\(T\)趋于0时热容趋于0，更意味着在温度足够低的一个范围内，我们可以认为此时的振动热容均为0，形象的说，这个低温范围内，振动被“冻结”了。极限分析给出了温度相对于\(\theta_{\mathrm{v}}\)极低和极高时的热容图像，振动热容随温度的整体变化规律请读者参考图\ref{fig:双原子振转热容示意图}。
+容易看出，随着温度降低，振动热容指数收敛为0。注意这和平动热容是显著不同的：这不仅意味着\(T\)趋于0时热容趋于0，更意味着在温度足够低的一个范围内，因为指数函数的快速收敛，我们可以认为此时的振动热容均为0，形象的说，这个低温范围内，振动被“冻结”了。极限分析给出了温度相对于\(\theta_{\mathrm{v}}\)极低和极高时的热容图像，振动热容随温度的整体变化规律请读者参考图\ref{fig:双原子振转热容示意图}。
 
 最后计算转动热容。双原子分子的转动，可以认为是一个刚性转子绕其质心的转动。量子力学表明这种转动是量子化的，即课程的最开始部分提及的转动能级，因此转动配分函数是
 \begin{equation}
@@ -447,12 +462,14 @@
 \begin{equation}
     u_{\nu}\approx\frac{8\pi h}{c^3}\frac{\nu^3}{\beta h\nu}=\frac{8\pi\k T}{c^3}\nu^2
 \end{equation}
-上式没有出现普朗克常数，在普朗克提出黑体分布的正确公式前就被人们发现即瑞利-金斯公式\footnote{利用能量均分定理，认为每个简正模式贡献的内能为\(\k T\)，就能得到瑞利-金斯公式}。两者的区别可以看下图中的左图。
-\begin{figure}[H]
+上式没有出现普朗克常数，在普朗克提出黑体分布的正确公式前就被人们发现即瑞利-金斯公式\footnote{利用能量均分定理，认为每个简正模式贡献的内能为\(\k T\)，就能得到瑞利-金斯公式}。两者的区别可以看图\ref{fig:黑体分布示意图}中的左图。
+
+倘若认为瑞利-金斯公式在全波段成立，显然这个不断增长的谱能量密度会导致发散的内能密度，因为发散出现在高频部分，这被称为黑体辐射的“紫外灾难”。不过紫外灾难更像是一个激动人心的故事，紫外灾难这一说法在普朗克提出黑体分布十年之后才被提出，此时黑体分布早已被解决。而且普朗克本人也不认为能量均分定理是恒成立的，对他来说瑞利-金斯公式在高频段是必然不成立，那又何来灾难一说。
+\begin{figure}
     \includegraphics[width=\textwidth]{../../Figure/热统/正则系综的若干应用/黑体分布示意图.eps}
     \caption{从左图（\(T=300\mathrm{K}\)）中可以看到低频波段瑞利-金斯公式与普朗克公式符合较好而高频波段出现所谓的“紫外灾难”。从右图可以看出随着温度升高，最强辐射对应的波长逐渐变短。两图相比，\(T=300\mathrm{K}\)时两种形式的黑体分布（在适当的坐标刻度下）差别不大，但后文的分析将表明，它们的峰随温度的移动截然不同。}
+    \label{fig:黑体分布示意图}
 \end{figure}
-倘若认为瑞利-金斯公式在全波段成立，显然这个不断增长的谱能量密度会导致发散的内能密度，因为发散出现在高频部分，这被称为黑体辐射的“紫外灾难”。不过紫外灾难更像是一个激动人心的故事，紫外灾难这一说法在普朗克提出黑体分布十年之后才被提出，此时黑体分布早已被解决。而且普朗克本人也不认为能量均分定理是恒成立的，对他来说瑞利-金斯公式在高频段是必然不成立，那又何来灾难一说。
 
 任何一个合理的分布，必然存在最大值。在普朗克之前，黑体分布的最大值对应的波长\(\lambda_{\text{max}}\)与温度的关系已被实验测得，即维恩位移定律\footnote{实际上基于热力学就可以推出维恩位移定律，而且形式比这里给出的形式更强，它限定了黑体分布的表达式，读者可以参考王竹溪先生的《热力学》第21节}，其表述为
 \begin{equation}
@@ -636,7 +653,7 @@
 \end{equation}
 其中
 \begin{equation}
-    \frac{1}{v^3}=3\left(\frac{2}{v_{\mathrm{t}}^3}+\frac{1}{v_{\mathrm{l}}^3}\right)
+    \frac{1}{v^3}=\frac{1}{3}\left(\frac{2}{v_{\mathrm{t}}^3}+\frac{1}{v_{\mathrm{l}}^3}\right)
 \end{equation}
 
 对于这里求出的连续介质中的弹性波的简正模式密度，德拜模型认为它就是晶体的简正模式密度，但有一个问题是弹性波的简正模式有无穷个，但晶体只有\(3N\)个简正模式。德拜用一种简单的截断来解决这一矛盾，他认为频率超过\(\omega_{\mathrm{D}}\)的简正模式在晶体中不存在，即简正频率只在0到\(\omega_{\mathrm{D}}\)中取值。那么\(\omega_{\mathrm{D}}\)将满足
@@ -685,7 +702,7 @@
 \end{equation}
 这也是一个特殊积分，读者可查阅积分表得到。不难看出，低温时\(C_V\propto T^3\)，这被称为德拜\(T^3\)定律。对于很多固体\footnote{主要是非金属固体}，其在低温下的行为均符合德拜\(T^3\)定律。有意思的是，我们之前接触的大多统计模型在低温时与实验相差较大，而德拜模型反过来，温度越低德拜模型越符合实验。这是因为低温时固体的热容主要由低频简正频率主导，而这部分简正频率和弹性波的简正频率很符合，至于很符合的原因，读者会在固体物理课程学习。
 
-除了低温极限，整体上德拜模型也和实验数据吻合较好。一个检验德拜模型准确性的简单方法是，根据实验测得的温度和热容，从式\eqref{eq:德拜热容}中数值计算解出德拜温度，画出这一德拜温度随温度的变化。理论上倘若德拜模型完全准确，那么得到的将是一条水平线，但实际上只在极低温时该曲线是水平的，随着温度升高，曲线开始变形，因为德拜模型毕竟是近似理论。对于微观结构复杂的晶体，德拜模型偏差较大，因为它的简正频率会很复杂。不过很多情形下，鉴于德拜模型非常简单，仍不失为一个优秀的近似理论。
+除了低温极限，整体上德拜模型也和实验数据吻合较好。一个检验德拜模型准确性的简单方法是，根据实验测得的温度和热容，从式\eqref{eq:德拜热容}中数值计算解出德拜温度，画出这一德拜温度随温度的变化。理论上倘若德拜模型完全准确，那么得到的将是一条水平线\footnote{读者可能会疑惑，即使德拜模型的频谱是真实频谱，德拜温度作为波速和体积的函数，在不同温度下本应不同，为什么理论上德拜温度不变。原因在于德拜模型属于热容理论的一种，而我们的热容理论假定了原子做微振动即间谐近似，读者在固体物理中将学习不考虑非简谐效应德拜温度就是定值}，但实际上只在极低温时该曲线是水平的，随着温度升高，曲线开始变形，因为德拜模型毕竟是近似理论。对于微观结构复杂的晶体，德拜模型偏差较大，因为它的简正频率会很复杂。不过很多情形下，鉴于德拜模型非常简单，仍不失为一个优秀的近似理论。
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{../../Figure/热统/正则系综的若干应用/德拜模型热容示意图.pdf}
@@ -719,7 +736,10 @@
         \end{equation}
         求导给出热容
         \begin{equation}
-            C_V=3N\k D\left(\frac{\theta_{\mathrm{D}}}{T}\right)+3N\k TD'\left(\frac{\theta_{\mathrm{D}}}{T}\right)\left(-\frac{\theta_{\mathrm{D}}}{T^2}\right)=3N\k\left[D\left(\frac{\theta_{\mathrm{D}}}{T}\right)-\frac{\theta_{\mathrm{D}}}{T}D'\left(\frac{\theta_{\mathrm{D}}}{T}\right)\right]
+            \begin{split}
+                C_V&=3N\k D\left(\frac{\theta_{\mathrm{D}}}{T}\right)+3N\k TD'\left(\frac{\theta_{\mathrm{D}}}{T}\right)\left(-\frac{\theta_{\mathrm{D}}}{T^2}\right) \\
+                &=3N\k\left[D\left(\frac{\theta_{\mathrm{D}}}{T}\right)-\frac{\theta_{\mathrm{D}}}{T}D'\left(\frac{\theta_{\mathrm{D}}}{T}\right)\right]
+            \end{split}
         \end{equation}
         由先前的热容公式\eqref{eq:德拜热容}不难看出
         \begin{equation}
@@ -727,7 +747,10 @@
         \end{equation}
         倘若读者计算一下上式的左端，会发现它看起来并不等于右端。为了简化书写，令\(\frac{\theta_{\mathrm{D}}}{T}=x\)，左式化简结果为
         \begin{equation}
-            D(x)-xD'(x)=\frac{3}{x^3}\int_0^{x}\frac{y^3}{\mathrm{e}^y-1}\dd y-x\left(\frac{-9}{x^4}\int_0^{x}\frac{y^3}{\mathrm{e}^y-1}\dd y+\frac{3}{\mathrm{e}^x-1}\right)=\frac{12}{x^3}\int_0^{x}\frac{y^3}{\mathrm{e}^y-1}\dd y-\frac{3x}{\mathrm{e}^x-1}
+            \begin{split}
+                D(x)-xD'(x)&=\frac{3}{x^3}\int_0^{x}\frac{y^3}{\mathrm{e}^y-1}\dd y-x\left(\frac{-9}{x^4}\int_0^{x}\frac{y^3}{\mathrm{e}^y-1}\dd y+\frac{3}{\mathrm{e}^x-1}\right) \\
+                &=\frac{12}{x^3}\int_0^{x}\frac{y^3}{\mathrm{e}^y-1}\dd y-\frac{3x}{\mathrm{e}^x-1}
+            \end{split}
         \end{equation}
         左式有两项而右式只有一项，两者相等的关键是对右式做分部积分
         \begin{equation}
