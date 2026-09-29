@@ -27,6 +27,7 @@ _build/
 
 # --- Compiled output ---
 *.pdf
+!Figure/**/*.pdf
 
 # --- OS / Editor ---
 .DS_Store
