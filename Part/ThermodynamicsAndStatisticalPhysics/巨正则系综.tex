@@ -2,4 +2,586 @@
 
 \begin{document}
 \chapter{巨正则系综}
+我们在引入正则系综时，提及微正则系综仅适用于孤立系统，为此有必要发展出针对封闭系统和开放系统的统计手段。对于前者，我们提出了正则系综理论，而对于后者，我们提出本章介绍的巨正则系综理论。在正则系综部分我们证明了正则系综的能量涨落极小，因此将系统视作孤立系统亦或封闭系统只是统计手段方便与否的问题。事实上，对于很多系统，将其视为开放系统也是因为巨正则系综的手段更加简便。读者不难看出，正则系综在处理玻尔兹曼系统时非常方便但在处理不可分辨系统时，由于粒子数固定这个约束就无能为力了。相较于正则系综的粒子数固定，巨正则系综允许系统和粒子源交换粒子，其\((\mu,V,T)\)固定，没有了粒子数固定的约束，我们能方便地讨论量子气体，在这个领域我们将得到显著不同于经典理想气体的结论。
+
+\section{与热库和粒子源接触的平衡系统}
+考虑一个开放系统，它与环境交换能量和粒子数，最终与环境平衡即与环境有共同的温度和化学势。我们可以把环境抽象成热源和粒子源，系统和环境构成的总系统显然是一个孤立系统。由此我们可以求出开放系统取某个量子态的概率，即所谓的巨正则分布。这里的求法和求正则分布完全相同，只是我们要同时考虑系统的能量和粒子数。
+
+当系统处于量子态\(s\)时，不妨假设此时系统的能量为\(E_s\)而粒子数为\(N_s\)。设总系统的能量为\(E_0\)而粒子数为\(N_0\)，那么环境将获得剩下的能量\(E_0-E_s\)和粒子数\(N_0-N_s\)。系统量子态确定，因此只有一个微观状态，记此时环境的微观状态数为\(\Omega(E_0-E_s,N_0-N_s)\)，由于总系统为孤立系统，其满足等概率原理，所以系统量子态\(s\)出现的概率正比于此时总系统的微观状态数，即
+\begin{equation}
+    P_s\propto \Omega(E_0-E_s,N_0-N_s)
+\end{equation}
+为了利用玻尔兹曼熵公式，对上式取对数得
+\begin{equation*}
+    \ln P_s \propto \ln \Omega(E_0-E_s,N_0-N_s)
+\end{equation*}
+环境的规模是远大于系统的，因此\(E_0\gg E_s\)且\(N_0 \gg N_s\)，这意味着我们可以把上式以\((E_0,N_0)\)为中心进行泰勒展开即
+\begin{equation}
+    \ln\Omega(E_0-E_s,N-N_s)\approx \ln\Omega(E_0,N_0)+\left.\pdv{\ln\Omega(E,N)}{E}\right|_{\substack{E=E_0 \\ N=N_0}}(-E_s)+\left.\pdv{\ln\Omega(E,N)}{N}\right|_{\substack{E=E_0 \\ N=N_0}}(-N_s)
+\end{equation}
+由热力学基本微分方程\(\dd S=\frac{1}{T}\dd U+\frac{p}{T}\dd V-\frac{\mu}{T}\dd N\)可得上式中的两个一阶偏导为
+\begin{equation}
+    \begin{cases}
+        \displaystyle \left.\pdv{\ln\Omega(E,N)}{E}\right|_{\substack{E=E_0 \\ N=N_0}}=\frac{1}{\k T} \\
+        \displaystyle \left.\pdv{\ln\Omega(E,N)}{N}\right|_{\substack{E=E_0 \\ N=N_0}}=-\frac{\mu}{\k T}
+    \end{cases}
+\end{equation}
+请读者注意，为了得到这一结果我们假定了环境是孤立系统，在推导正则分布时我们也是这样做的。数学上这是因为计算微观状态数时环境的能量和粒子数固定，就是孤立系统；物理上这是因为环境的能量和粒子数涨落很小以至于我们可以将其看作孤立系统。当然我们还使用了热库和粒子源的温度和化学势恒定这一模型假设。我们已经定义了\(\beta=\frac{1}{\k T}\)，在巨正则系综理论中\(-\frac{\mu}{\k T}\)也将频繁出现，因此我们记\(\alpha=-\frac{\mu}{\k T}\)，这样量子态\(s\)出现的概率可以写成
+\begin{equation}
+    \ln P_s \propto \ln \Omega(E_0-E_s,N_0-N_s)\approx \ln\Omega(E_0,N_0)-\beta E_s-\alpha N_s
+\end{equation}
+取指数后得到
+\begin{equation}
+    P_s\propto\Omega(E_0,N_0)\e^{-\beta E_s-\alpha N_s} \propto \e^{-\beta E_s-\alpha N_s}
+\end{equation}
+上式中的比例因子即归一化系数，我们记为\(\frac{1}{\mathcal{Z}}\)，不难得到
+\begin{equation}
+    \mathcal{Z}=\sum_s \e^{-\beta E_s-\alpha N_s}
+\end{equation}
+由此我们得到了开放系统某一量子态\(s\)出现的概率为
+\begin{equation}
+    \begin{cases}
+        \displaystyle P_s=\frac{1}{\mathcal{Z}}\e^{-\beta E_s-\alpha N_s} \\
+        \displaystyle \mathcal{Z}=\sum_s \e^{-\beta E_s-\alpha N_s}
+    \end{cases}
+\end{equation}
+
+可以看到巨正则分布和正则分布形式非常类似，看起来区别只是巨正则分布涉及到两个变量\(E\)和\(N\)而正则分布只涉及到\(E\)。更进一步，我们注意到能量和\(\beta\)相乘，粒子数和\(\alpha\)相乘，这是一个很对称的结构。不过由于\(\alpha=-\beta\mu\)所以巨正则分布也可以写成
+\begin{equation}
+    P_s=\frac{1}{\mathcal{Z}}\e^{-\beta (E_s-\mu N_s)}
+\end{equation}
+可以看到该式中能量和粒子数处于一个不对称\footnote{能量的粒子数的量纲本就不一致，地位不对称也是应当的}的地位。显然两种形式的巨正则分布没有本质区别，只是采用的符号不同罢了，这种形式的差别会导致巨正则系综框架下热力学量的表达式也有两种，细节将在下一节讨论。巨正则分布的归一化系数的倒数\(\mathcal{Z}\)被称为巨正则配分函数，简称巨配分函数。读者不难猜到，巨配分函数在开放系统中的地位等同于正则配分函数在封闭系统的地位，知道了巨配分函数就知道了系统的所有热力学量。
+
+有意思的是，巨配分函数可以用配分函数表示出来，其中的秘诀在于把巨配分函数的对态求和分成两步。配分函数的对态求和能分成两步，第一步固定系统的能量求和，第二步对系统所有可能的能量求和。巨配分函数的计算也有类似思路，首先固定系统的粒子数求和，接着对系统所有可能的粒子数求和，即
+\begin{equation}
+    \mathcal{Z}=\sum_s \e^{-\beta E_s-\alpha N_s}=\sum_{N}\e^{-\alpha N}\sum_{s'}\e^{-\beta E_{s'}^{N}}=\sum_N \e^{-\alpha N}Z_N
+\end{equation}
+其中\(E_{s'}^{N}\)表示系统的粒子数固定时量子态\(s'\)的能量。不难看出，第一步的求和结果正是系统粒子数为\(N\)时的配分函数，所以我们用\(Z_N\)表示。实际上该公式是略显鸡肋的。当我们能计算出系统的配分函数时，可以直接用正则系综的理论求出热力学量，没必要再去计算巨配分函数；当系统的配分函数无法计算而巨配分函数易于计算时，上式完全没有意义。
+\section{巨正则系综的热力学量}
+开放系统的能量和粒子数都是不确定的，其内能为系统能量的期望，对于粒子数，因有符号混乱的嫌疑，我们先做如此规定。在统计表达式的推导过程中，我们将系统可能的粒子数记为\(N\)，它是一个随机变量；而把开放系统热力学意义上或者说实验上测得的粒子数记为\(\bar{N}\)，它是\(N\)的期望。在后文处理具体模型时我们仍用\(N\)表示系统热力学上的粒子数，因为那时我们会直接使用本节得到的统计表达式，不存在符号混乱的可能。
+
+我们首先计算系统的内能，仿照封闭系统内能的计算方法，我们再次利用指数函数的求导性质来计算\footnote{不知道读者是否发现，从配分函数出发计算宏观物理量，都是借助指数函数的求导性质完成的}。
+\begin{equation}\label{eq:对称巨正则内能}
+    U=\sum_s E_sP_s=\frac{1}{\mathcal{Z}}\sum_s E_s\e^{-\beta E_s-\alpha N_s}=-\frac{1}{\mathcal{Z}}\sum_s \pdv{\beta}\e^{-\beta E_s-\alpha N_s}=-\frac{1}{\mathcal{Z}}\pdv{\mathcal{Z}}{\beta}=-\left(\pdv{\ln\mathcal{Z}}{\beta}\right)_{\alpha,V}
+\end{equation}
+请读者注意，上式中巨配分函数的对数对\(\beta\)的偏导是在\(\alpha\)固定的情况下计算的，后文我们将给出在\(\mu\)固定的情况下的表达式。接着计算系统的粒子数，不难想到，只需把对\(\beta\)的求导换成对\(\alpha\)的求导即可
+\begin{equation}\label{eq:对称巨正则粒子数}
+    \bar{N}=\sum_s N_sP_s=\frac{1}{\mathcal{Z}}\sum_s N_s\e^{-\beta E_s-\alpha N_s}=-\frac{1}{\mathcal{Z}}\sum_s \pdv{\alpha}\e^{-\beta E_s-\alpha N_s}=-\frac{1}{\mathcal{Z}}\pdv{\mathcal{Z}}{\alpha}=-\left(\pdv{\ln\mathcal{Z}}{\alpha}\right)_{\beta,V}
+\end{equation}
+
+我们的计算假定了巨正则分布的表达式为\(P_s=\frac{1}{\mathcal{Z}}\e^{-\beta E_s-\alpha N_s}\)，如果利用另一个形式\(P_s=\frac{1}{\mathcal{Z}}\e^{-\beta (E_s-\mu N_s)}\)，我们会得到
+\begin{equation}\label{eq:不对称巨正则内能}
+    \begin{split}
+        U&=\frac{1}{\mathcal{Z}}\sum_s E_s \e^{-\beta (E_s-\mu N_s)} \\
+        &=-\frac{1}{\mathcal{Z}}\sum_s\left[\left(\pdv{\beta}\e^{-\beta (E_s-\mu N_s)}\right)_{\mu}-\mu N_s\e^{-\beta (E_s-\mu N_s)}\right] \\
+        &=-\left(\pdv{\ln \mathcal{Z}}{\beta}\right)_{\mu,V}+\mu\frac{1}{\mathcal{Z}}\sum_s N_s\e^{-\beta (E_s-\mu N_s)} \\
+        &=-\left(\pdv{\ln \mathcal{Z}}{\beta}\right)_{\mu,V}+\mu \bar{N}
+    \end{split}
+\end{equation}
+可以看到此时的内能公式形式是比较复杂的，而且巨配分函数对数对\(\beta\)的偏导是在\(\mu\)固定的情况下计算的。为了求出这个形式下的内能，还需要计算出系统的粒子数
+\begin{equation}\label{eq:不对称巨正则粒子数}
+    \bar{N}=\frac{1}{\mathcal{Z}}\sum_s N_s\e^{-\beta (E_s-\mu N_s)}=\frac{1}{\beta}\frac{1}{\mathcal{Z}}\sum_s \pdv{\mu}\e^{-\beta (E_s-\mu N_s)}=\k T\left(\pdv{\ln\mathcal{Z}}{\mu}\right)_{\beta,V}
+\end{equation}
+
+至此，从巨正则分布的两种形式出发，我们得到了两组内能和粒子数的表达式，显然针对一个具体的系统，其热力学量是唯一的，因此两组表达式给出的结果是完全相同的。数学上这是因为\(\alpha=-\beta\mu\)即巨正则分布的两种形式只是变量换元的区别，下面来详细分析一下两组公式的等价性。对于式\eqref{eq:对称巨正则粒子数}和式\eqref{eq:不对称巨正则粒子数}，由\(\alpha=-\beta\mu\)很容易证明两式相等
+\begin{equation}
+    -\left(\pdv{\ln\mathcal{Z}}{\alpha}\right)_{\beta,V}=-\left(\pdv{\ln\mathcal{Z}}{(-\beta\mu)}\right)_{\beta,V}=\k T\left(\pdv{\ln\mathcal{Z}}{\mu}\right)_{\beta,V}
+\end{equation}
+对于内能的两个公式\eqref{eq:对称巨正则内能}和\eqref{eq:不对称巨正则内能}，证明两者相等要使用一个热力学中常用的伎俩，即复合函数求导的链式法则。注意到\(\ln\mathcal{Z}\)是\((\beta,\alpha,V)\)的函数而\(\alpha\)又是\((\beta,\mu)\)的函数，所以\(\ln\mathcal{Z}\)关于\((\beta,\mu,V)\)的依赖关系可以写成\(\ln\mathcal{Z}(\beta,\alpha(\beta,\mu),V)\)，我们固定\(\mu\)，计算\(\ln\mathcal{Z}\)对\(\beta\)的导数，可得
+\begin{equation}
+    \left(\pdv{\ln \mathcal{Z}}{\beta}\right)_{\mu,V}=\left(\pdv{\ln \mathcal{Z}}{\beta}\right)_{\alpha,V}+\left(\pdv{\ln \mathcal{Z}}{\alpha}\right)_{\beta,V}\left(\pdv{\alpha}{\beta}\right)_{\mu,V}
+\end{equation}
+对上式移项就证出了两个内能公式相等
+\begin{equation}
+    -\left(\pdv{\ln \mathcal{Z}}{\beta}\right)_{\alpha,V}=-\left(\pdv{\ln \mathcal{Z}}{\beta}\right)_{\mu,V}-\mu\left(\pdv{\ln \mathcal{Z}}{\alpha}\right)_{\beta,V}=-\left(\pdv{\ln \mathcal{Z}}{\beta}\right)_{\mu,V}+\mu\bar{N}
+\end{equation}
+因为两组公式的等价性实践中使用哪个公式是任意的，后文我们将使用式\eqref{eq:对称巨正则内能}和式\eqref{eq:对称巨正则粒子数}，因为它们更对称。
+
+开放系统的内能和粒子数有明显的统计意义，因此我们首先讨论了两者的统计表达式，除此之外，由吉布斯熵公式我们还可以计算出系统的熵
+\begin{equation}
+    \begin{split}
+        S&=-\k\sum_sP_s\ln P_s=-\k\sum_sP_s\big[-\beta E_s-\alpha N_s-\ln\mathcal{Z}\big] \\
+        &=\k\beta U+\k\alpha \bar{N}+\k\ln\mathcal{Z}=\frac{U}{T}-\frac{\mu}{T}\bar{N}+\k\ln\mathcal{Z}
+    \end{split}
+\end{equation}
+将内能和粒子数的表达式代入上式就得到了熵与巨配分函数的关系，此处不做展示。计算出熵后，貌似就没有统计意义明确的热力学量了，我们暂且停下计算转而考虑开放系统的特性函数。
+
+封闭系统的\((N,V,T)\)固定，其特性函数为自由能，因为读者对自由能比较熟悉，所以我们在正则系综部分直接给出了封闭系统的特性函数而未做任何说明。实际上寻找系统的特性函数是方法的，思路的起点是热力学的核心公式热力学基本微分方程\(\dd U=T\dd S-p\dd V+\mu \dd N\)。开放系统的\((\mu,V,T)\)固定，因此它的特性函数的微分必然是这三个变量的微分和，观察热力学基本微分公式，这意味着我们要对\((T,S)\)和\((\mu,N)\)这两对变量做勒让德变换
+\begin{equation}
+    \dd U=\dd(TS)-S\dd T-p\dd V+\dd(\mu N)-N\dd\mu
+\end{equation}
+将全微分移至等号的左边可得
+\begin{equation}
+    \dd(U-TS-\mu N)=-S\dd T-p\dd V-N\dd\mu
+\end{equation}
+上式的左端正是热力学中定义的热力学巨势\(J=F-\mu N=U-TS-\mu N\)，简称巨势。这意味着开放系统的特性函数就是巨势，为了得到巨势的统计表达式我们需要知道内能、粒子数和熵的统计表达式，恰好在前文我们已经计算了三者的表达式。实际上仅由熵的表达式我们就可以得到巨势的表达式\footnote{在计算吉布斯熵时我们只是使用了内能和粒子数的系综定义，即使不知道内能和粒子数的统计表达式，将熵的表达式带入巨势的定义式也能得到巨势的统计表达式，知道特性函数后就可以算出所有热力学量自然也包括内能和粒子数，所以吉布斯熵对于系综理论极其重要}，即
+\begin{equation}
+    J=U-T\left(\frac{U}{T}-\frac{\mu\bar{N}}{T}+\k\ln\mathcal{Z}\right)-\mu\bar{N}=-\k T\ln\mathcal{Z}
+\end{equation}
+这里的结论和正则系统完全相同，我们看到巨势和巨配分函数之间满足一个简洁的关系，而这一函数关系和正则系综的\(F=-\k T\ln Z\)完全相同\footnote{从所学的三大系综可以看出，它们的统计逻辑是一致的：先计算出该系综服从的分布，接着计算出吉布斯熵，最后求出特性函数，可以大胆参猜测其他系综也是如此。如此三步，便打通了微观规律和宏观规律，这是多么的简洁优雅啊}。求出特性函数后，其余热力学量的计算将是纯粹的数学运算，我们会在具体的模型中计算，此处不做讨论。有意思的是，化学势的物理意义为单粒子吉布斯自由能，这意味着
+\begin{equation}
+    J=U-TS-G=U-TS-(U+pV-TS)=-pV
+\end{equation}
+所以压强或者说物态方程有一个简单的表达式
+\begin{equation}
+    p=-\frac{J}{V}=\frac{\k T}{V}\ln\mathcal{Z}
+\end{equation}
+下面通过一个例题简单说明化学势和吉布斯自由能的关系。
+\begin{example}\label{ex:化学势单吉布斯能证明}
+    试证明\(\mu=\frac{G}{N}\)。
+    \begin{solution}
+        封闭系统的热力学基本微分方程为\(\dd U=T\dd S-p\dd V\)，考虑开放系统，系统和外界交换粒子也会影响系统的内能，所以\(\dd U\)的表达式中应有一项\(\dd N\)。类似熵和体积，它们和各自的共轭变量一起影响内能，粒子数也应该有自己的共轭变量，我们记为\(\mu\)，称其为化学势。那么开系的热力学基本微分方程为
+        \begin{equation}
+            \dd U=T\dd S-p\dd V+\mu\dd N
+        \end{equation}
+        但是这样引入的化学势没有清晰的物理含义，它是上式出现的七个物理量中唯一一个被迫引入，可以说化学势的所有物理意义都蕴含在上式中。比如最明显的物理意义是定容绝热系统的内能随粒子数的变化率。
+
+        考虑系统的广延性，我们能得到一个很有益的结论。当热力学系统的规模扩大\(\lambda\)倍时，其广延量变大\(\lambda\)倍而强度量不变，对于内能，这意味着
+        \begin{equation}
+            \lambda U(S,V,N)=U(\lambda S,\lambda V,\lambda N)
+        \end{equation}
+        上式的两端对\(\lambda\)求导
+        \begin{equation}
+            U=\left(\pdv{U}{(\lambda S)}\right)_{\lambda V,\lambda N}S+\left(\pdv{U}{(\lambda V)}\right)_{\lambda S,\lambda N}V+\left(\pdv{U}{(\lambda N)}\right)_{\lambda S,\lambda V}N
+        \end{equation}
+        令\footnote{或者说把\((\lambda S,\lambda V,\lambda N)\)整体看作\((S,V,N)\)}上式右端的\(\lambda=1\)，再结合热力学基本微分方程可得
+        \begin{equation}
+            U=TS-pV+\mu N
+        \end{equation}
+        回忆吉布斯自由能的定义\(G=U-TS+pV\)，可得化学势为
+    \begin{equation}
+        \mu=\frac{U-TS+pV}{N}=\frac{G}{N}
+    \end{equation}
+    这是对化学势的另一种理解，虽然吉布斯自由能本身也较为抽象，但该式告诉我们可以不从变化率的角度理解化学势。从该式也能猜出为什么\(\mu\)被称为化学势，因为吉布斯自由能作为压强和温度的特性函数，在化学中广泛使用；而相变平衡中，物质会朝化学势小的相过渡直到两相化学势相等，因此认为它是一种势。上述推导从内能的广延性出发，读者可由吉布斯自由能的广延性\(\lambda G(p,T,N)=G(p,T,\lambda N)\)或任何其余热力学量的广延性出发得到\(\mu=\frac{G}{N}\)。
+    
+    这种推导和齐次函数的欧拉定理推导过程相同，希望读者能记住这种数学技巧，它在热力学中能导出一些很有用的结论。
+    \end{solution}
+\end{example}
+最后要强调的是，巨正则系综固定\((\mu,V,T)\)，没有粒子数固定的约束对求解过程友好但得到的结果并不方便，因为化学势并不易于测量。所以对于实际模型，我们往往把统计出的粒子数公式\(\bar{N}(\mu,V,T)\)作为化学势的表达式\footnote{也就是说，令系统实际的、测量出的粒子数等于巨正则系综理论计算出的平均粒子数\(N=\bar{N}(\mu,V,T)\)}，借此显式或者隐式地确定化学势关于\((N,V,T)\)的关系，进而把其余热力学量中的化学势均换成\((N,V,T)\)的函数\footnote{这一步不仅是为了好看也是有必要的，很多热力学量的计算暗含了粒子数不变，以定容热容为例\(C_V=\left(\pdv{U}{T}\right)_{V,N}\)，利用巨正则系综求出的内能是以化学势为变量的，我们必须把化学势表示成粒子数的函数来计算热容，如果能显式表示那就能得到解析结果，倘若不能就只能得到数值结果，但无论怎样，这一步变换是有必要的}，也就是把系统的自然变量从\((\mu,V,T)\)换成\((N,V,T)\)，这是实验友好且易于理解的。
+
+\section{组合巨配分函数——求和的艺术}
+巨正则系综属于系综理论的一种，因此完全可以处理相互作用系统，但此时巨配分函数几乎不可能解析计算，因此和前两个系综的讨论一样，我们依然只讨论近独立系统。正如\ref{sec:组合配分函数}节开头所言，系统的量子态并不好讨论，不过近独立系统允许我们把配分函数拆成各个子项，从数学上避开对系统量子态的讨论转而讨论单粒子量子态。\ref{sec:组合配分函数}节我们完成了玻尔兹曼系统的配分函数的拆分，当我们试图拆分玻色系统和费米系统的配分函数时，正则系综粒子数固定的约束迫使讨论中断。在本节，我们承接这个讨论，在巨正则系综的框架下，讨论能否把巨配分函数拆称各个子项的积。我们先讨论玻色系统和费米系统，最后再去讨论玻尔兹曼系统。
+
+对于玻色系统和费米系统，当各量子态的粒子数确定时，系统的量子态就确定了。而给定各量子态的粒子数就是给定系统的一个分布\footnote{我们在讨论最概然分布的时候引入的分布是各能级的粒子数，这里的分布指的是各量子态的粒子数，实际上分布的具体含义是随讨论语境而改变的}，所以系统的分布和系统的量子态是一一对应的。我们用\(\{n_r\}\)表示系统的一个分布，其中\(r\)表示单粒子量子态，\(n_r\)是一个变量\footnote{第\ref{sec:组合配分函数}节有一个脚注\ref{fn:组合配分函数之单粒子量子态}，这里的\(n_r\)也是类似的含义，它是一个变量，后文会对它求和，不要把它理解成一个数字了}。对于这一分布，系统的量子态确定，自然其能量和粒子数也是确定的，不难想到它们可以表示为
+\begin{equation}
+    \begin{cases}
+        \displaystyle E=\sum_r E_rn_r \\
+        \displaystyle N=\sum_r n_r
+    \end{cases}
+\end{equation}
+这样，巨配分函数就可以表示成
+\begin{equation}
+    \mathcal{Z}=\sum_s \e^{-\beta E_s-\alpha N_s}=\sum_{\{n_r\}}\exp(-\beta\sum_r E_rn_r-\alpha\sum_r n_r)
+\end{equation}
+
+这个表达式并不出人意外，在拆分配分函数时我们也能得到这个表达式。不同的是，这里我们使用的巨正则系综，系统的粒子数不固定，这意味着各\(n_r\)不需要满足某一个方程，它们的取值是任意的且不相关的。这样对集合\(\{n_r\}\)的求和就可以写成对各\(n_r\)的求和。观察待求和函数，这个看起来异常复杂的指数函数其实非常简洁，它能拆成各指数函数的积，其中每一项指数函数只有一个\(n_r\)。由此我们来拆分这个巨配分函数
+\begin{equation}\label{eq:拆分巨配分函数}
+    \begin{split}
+        \mathcal{Z}&=\sum_{n_1,n_2,\dots,n_r,\dots}\e^{-\beta E_1n_1-\alpha n_1}\e^{-\beta E_2n_2-\alpha n_2}\cdots\e^{-\beta E_rn_r-\alpha n_r}\cdots \\
+        &=\sum_{n_2,\dots,n_r,\dots}\e^{-\beta E_2n_2-\alpha n_2}\cdots\e^{-\beta E_rn_r-\alpha n_r}\cdots\sum_{n_1}\e^{-\beta E_1n_1-\alpha n_1} \\
+        &=\sum_{n_3,\dots,n_r,\dots}\e^{-\beta E_3n_3-\alpha n_3}\cdots\e^{-\beta E_rn_r-\alpha n_r}\cdots\sum_{n_2}\e^{-\beta E_2n_2-\alpha n_2}\sum_{n_1}\e^{-\beta E_1n_1-\alpha n_1} \\
+        &=\sum_{n_1}\e^{-\beta E_1n_1-\alpha n_1}\sum_{n_2}\e^{-\beta E_2n_2-\alpha n_2}\cdots\sum_{n_r}\e^{-\beta E_rn_r-\alpha n_r}\cdots
+    \end{split}
+\end{equation}
+不知读者对这个拆分过程和拆分结果是否熟悉，这和式\eqref{eq:组合配分函数之玻尔兹曼系统}的数学运算可以说完全相同。不过不同于式\eqref{eq:组合配分函数之玻尔兹曼系统}，玻尔兹曼系统各粒子的量子态不一定一样，即使一样，粒子量子态也取决于具体的问题，因此无法进一步计算，但这里各\(n_r\)的取值范围是相同的。对于玻色系统，各\(n_r\)的取值范围都为自然数；而对于费米系统，各\(n_r\)的取值范围都是\(\{0,1\}\)。因此上式巨配分函数中连乘的求和项的不同求和指标\(n_r\)可以用同一个求和指标\(n\)替代，即
+\begin{equation}
+    \mathcal{Z}=\prod_r\sum_{n}\e^{-\beta E_rn-\alpha n}=\prod_r\sum_n\Big[\e^{-\beta E_r-\alpha}\Big]^n=\prod_r \mathcal{Z}_r
+\end{equation}
+其中\(\mathcal{Z}_r\)为
+\begin{equation}
+    \mathcal{Z}_r=\sum_n\Big[\e^{-\beta E_r-\alpha}\Big]^n
+\end{equation}
+正是巨配分函数的子项。到这我们已经完成了拆分巨配分函数的任务，因为对于每一个子项，它仅取决于粒子的量子态，整个巨配分函数的计算不需要知道系统量子态。
+
+下面针对玻色系统和费米系统，显式地就算出子项的表达式。对于玻色系统，\(n\)取遍自然数即
+\begin{equation}\label{eq:玻色系统巨配分函数}
+    \mathcal{Z}_{\mathrm{B.E.}}=\prod_r\sum_{n=0}^{\infty}\Big[\e^{-\beta E_r-\alpha}\Big]^n=\prod_r\frac{1}{1-\e^{-\beta E_r-\alpha}}
+\end{equation}
+几何级数\(\displaystyle\sum_{n=0}^{\infty}z^n=\frac{1}{1-z}\)的收敛域为\(\abs{z}<1\)，这不仅能用来判断级数是否收敛，反过来也能为级数施加限定条件，因为当\(\abs{z}> 1\)时级数发散可能会导致发散的物理量，这是不合理的\footnote{当然物理学是实验科学，只有实验检验理论而没有理论限制实验，只能说一个理论的预言被实验验证了由此反过来说明理论的正确性。如果实验表明一个理论中的几何级数会发散，那么这个理论就有问题了要去修改理论}。具体到上式，这意味着\(\e^{-\beta E_r-\alpha}<1\)即\(\beta E_r+\alpha>0\)，利用\(\alpha=-\mu\beta\)可得
+\begin{equation}
+    \mu<E_r\,\,\text{恒成立} \Longrightarrow \mu<E_0
+\end{equation}
+也就是说玻色系统的化学势必须小于基态能量。对于费米系统，\(n\)只取0和1，即
+\begin{equation}\label{eq:费米系统巨配分函数}
+    \mathcal{Z}_{\mathrm{F.D.}}=\prod_r\sum_{n=0}^{1}\Big[\e^{-\beta E_r-\alpha}\Big]^n=\prod_r \Big(1+\e^{-\beta E_r-\alpha}\Big)
+\end{equation}
+对于具体的模型，我们直接使用\eqref{eq:玻色系统巨配分函数}和\eqref{eq:费米系统巨配分函数}或更有意义的对数形式开展计算，而不是像配分函数一样，先计算单粒子配分函数再过渡到配分函数。由此请读者注意，不要把这里巨配分函数的子项解读为单粒子巨配分函数，原因在于巨正则系综不固定系统的粒子数，单粒子巨配分函数没有任何意义\footnote{对比配分函数的形式，巨配分函数的每个子项仅涉及一个粒子量子态，而不是涉及一个粒子，称这个子项为单粒子项形式上就不对。此外玻色系统和费米系统的粒子不可分辨，从所谓的单粒子巨配分函数出发得到巨配分函数要考虑不可分辨效应，而这里的结果显然没有这种考虑，因为巨配分函数只是各子项的连乘}。不过我们可以把这个子项解释成单量子态巨配分函数。假设一个不可分辨系统，其中的粒子只有一个量子态，该量子态的能量为\(E^*\)。那么这个系统的所有粒子都将处在这一量子态上，系统不同量子态的区别仅在于这个量子态上有几个粒子，由此可得
+\begin{equation}
+    \mathcal{Z}=\sum_s \e^{-\beta E_s-\alpha N_s}=\sum_n\e^{-\beta nE^*-\alpha n}=\sum_n\Big[\e^{-\beta E^*-\alpha}\Big]^n=\begin{cases}
+        \displaystyle \frac{1}{1-\e^{-\beta E^*-\alpha}}\quad \text{玻色系统} \\
+        \displaystyle 1+\e^{-\beta E^*-\alpha} \quad \text{费米系统}
+    \end{cases}
+\end{equation}
+可以看到，这个巨配分函数正是\eqref{eq:玻色系统巨配分函数}和\eqref{eq:费米系统巨配分函数}中巨配分函数的子项。当然教材中并没有单量子态巨配分函数这个说法，此处提及只是为了和单粒子配分函数对比。
+
+现在我们开始讨论玻尔兹曼系统。对此，我们有两种拆分思路，一种是紧承上文，从分布入手，另一种思路是借鉴拆分配分函数，从粒子入手。有趣的是，这两种拆分思路实践起来都有些小问题，我们一一分析。从粒子入手是比较方便的，类似拆分正则配分函数，我们先把系统的量子态对应到各个粒子的量子态上。但是当我们讨论“各个”粒子的量子态这个概念时默认了系统粒子数固定，而巨正则系综没有这个约束。解决这一矛盾的关键是先固定系统的粒子数，计算巨配分函数的对态求和，接着对系统的粒子数求和。读者应该对此不陌生，前文我们正是用这种思路把巨配分函数和配分函数联系上的。再结合玻尔兹曼系统的配分函数是单粒子配分函数的\(N\)次幂，我们立马得到
+\begin{equation}
+    \mathcal{Z}=\sum_N \e^{-\alpha N}Z_N=\sum_{N=0}^{\infty} \e^{-\alpha N}Z_1^N=\sum_{N=0}^{\infty} \big(\e^{-\alpha}Z_1\big)^N=\frac{1}{1-\e^{-\alpha}Z_1}
+\end{equation}
+这样我们就实现了对巨配分函数的拆分。微妙的是，上述几何级数的收敛要求\(\abs{\e^{-\alpha}Z_1}=\e^{-\alpha}Z_1<1\)，我们不能把这作为玻尔兹曼系统的约束，因为它根本不成立。为了看出这一点，我们计算玻尔兹曼系统的化学势。
+
+我们要求巨正则系综和正则系综对玻尔兹曼系统都是成立的，也就是说两者的区别只是前者把化学势作为已知量而后者把化学势作为导出量，这一要求非常合理。由正则系综理论可得
+\begin{equation}
+    \mu=\left(\pdv{F}{N}\right)_{N,T}=-\k T\pdv{\ln Z}{N}=-\k T\pdv{N}(N\ln Z_1)=-\k T\ln Z_1
+\end{equation}
+由此可得
+\begin{equation}
+    \e^{-\alpha}Z_1=\frac{1}{Z_1}Z_1=1
+\end{equation}
+显然这一结果和几何级数收敛是矛盾的，也就是说对于玻尔兹曼系统，巨正则系综理论和正则系综理论不可能同时成立。某种意义上，这动摇了我们整个系综理论的基础，不过我们无意在此深究，因为读者马上会发现一个奇妙的事情。
+\begin{example}
+    设一个玻尔兹曼系统的粒子数为\(N\)，认为其巨配分函数为\(\mathcal{Z}=\frac{1}{1-\e^{-\alpha}Z_1}\)，证明巨正则系综理论和正则系综理论给出相同的内能公式。
+    \begin{solution}
+        正则系综理论的内能公式很简单，即
+        \begin{equation}
+            U=-N\pdv{\ln Z_1}{\beta}=-N\frac{1}{Z_1}\pdv{Z_1}{\beta}
+        \end{equation}
+        巨正则系综理论的内能为
+        \begin{equation}
+            U=-\pdv{\ln\mathcal{Z}}{\beta}=\pdv{\beta}\ln(1-\e^{-\alpha}Z_1)=\frac{1}{1-\e^{-\alpha}Z_1}\big(-\e^{-\alpha}\big)\pdv{Z_1}{\beta}
+        \end{equation}
+        为了消去公式中的化学势，我们还需要计算巨正则系综理论下系统的粒子数
+        \begin{equation}
+            N=-\pdv{\ln\mathcal{Z}}{\alpha}=\pdv{\alpha}\ln(1-\e^{-\alpha}Z_1)=\frac{1}{1-\e^{-\alpha}Z_1}Z_1\e^{-\alpha}
+        \end{equation}
+        不难看出\(\frac{1}{1-\e^{-\alpha}Z_1}\e^{-\alpha}=\frac{N}{Z_1}\)。带入内能公式可得
+        \begin{equation}
+            U=-\frac{N}{Z_1}\pdv{Z_1}{\beta}
+        \end{equation}
+        显然这两个系综给出了相同的内能公式。此外从巨正则系综理论的粒子数公式中反解出化学势为
+        \begin{equation}
+            \e^{-\alpha}Z_1=\frac{N}{N+1}
+        \end{equation}
+        对于宏观系统，上式右端约等于1，这和正则系综的结论是一致的。神奇的事情就在于此，巨配分函数是明显发散的，但我们“假装”它仍然收敛，继续计算会给出和正则系综同样的结论。
+
+        从抽象层次的物理哲学来说，无论什么配分函数，它们都不是可观测量，所以数学上有点什么问题不算很严重。从更实在的角度说，玻尔兹曼系统中的粒子是可分辨的，这意味着粒子粒子局域在一小块区域内，那么粒子之间必定有极强的相互作用使它们束缚在一起。这样对于一个实际的定域系统，正则系综的固定粒子数是很好的一个建模而巨正则系综要求其可以和外界任意交换粒子就显得有些牵强了\footnote{我们之前讨论的典型的定域系统就是顺磁性固体，固体中的原子被限制在固体中，除了最外层的原子会逸散到空气中，内部的原子是无法移动的。而对于理想气体这种不可分辨系统，根本就没有内层气体外层气体之分，给气体系统的壁开一个小孔就实现了和外界任意交换粒子}。
+    \end{solution}
+\end{example}
+
+读者不必深究巨正则系综无法处理玻尔兹曼系统会怎么样，毕竟正则系综已经可以完美地处理玻尔兹曼系统了。除了玻尔兹曼系统，满足非简并条件的玻色、费米系统也可以用单粒子配分函数表示配分函数，由此可得这种系统的巨配分函数为
+\begin{equation}\label{eq:非简并系统巨配分函数}
+    \mathcal{Z}=\sum_N \e^{-\alpha N}Z_N=\sum_{N=0}^{\infty} \e^{-\alpha N}\frac{Z_1^N}{N!}=\sum_{N=0}^{\infty} \frac{\big(\e^{-\alpha}Z_1\big)^N}{N!}=\exp(\e^{-\alpha}Z_1)
+\end{equation}
+很幸运上述求和没有任何问题，这个级数是一定收敛的。某种意义上，可以说巨正则系综专为不可分辨系统而生，对于满足非简并条件的不可分辨系统，其本质仍是不可分辨系统，它的巨配分函数可以优雅地表示为单粒子配分函数的函数。
+
+从粒子可分辨入手拆分玻尔兹曼系统的巨配分函数要借助正则配分函数，从分布入手的思路和前文是一致的。唯一的区别在于，给定玻尔兹曼系统的一个分布，其微观状态数是不唯一的，因此把对态求和变成对分布求和时要带上该分布对应的微观状态数，不难想到这个因子为
+\begin{equation}
+    W(\{n_r\})=\prod_r \frac{N!}{n_r!}\quad \text{其中}\;\; N=\sum_r n_r
+\end{equation}
+注意上述公式中的\(N\)不是定值，它是取决于分布的。不难写出巨配分函数为
+\begin{equation}
+    \mathcal{Z}=\sum_{\{n_r\}}\left(\prod_r \frac{N!}{n_r!}\right)\exp(-\beta\sum_r E_rn_r-\alpha\sum_r n_r)
+\end{equation}
+笔者在这里并不打算计算这个求和，因为\(N\)不固定使这个求和的计算没那么顺畅，有兴趣的读者可以自己了解。实际上这个求和的结果正是
+\begin{equation}
+    \mathcal{Z}=\sum_{N=0}^{\infty} \big(\e^{-\alpha}Z_1\big)^N
+\end{equation}
+这是可以想到的，因为我们是针对同一个系统用两种不同方式计算同一个量。正如前文所讨论的，对于这个求和式我们不做追究。接下来讨论满足非简并条件的不可分辨系统。在\ref{sec:最概然分布}节，我们证明过这种系统的最概然微观状态数为玻尔兹曼系统的最概然微观状态数的\(\frac{1}{N!}\)，当时强调过该关系只对最概然分布成立，但是此处为了能够拆分巨配分函数，或者说为了再次得到式\eqref{eq:非简并系统巨配分函数}，我们要假定该关系对所有的分布都成立\footnote{可以说这是一个耍赖的条件，只是这个条件下，得出的结论是正确的，因此我们采用，更深层的合理性笔者并不知道}。这样系数因子变为
+\begin{equation}
+    W(\{n_r\})=\prod_r \frac{1}{n_r!}\quad
+\end{equation}
+对应的巨配分函数为
+\begin{equation}
+    \begin{split}
+        \mathcal{Z}&=\sum_{\{n_r\}}\left(\prod_r \frac{1}{n_r!}\right)\exp(-\beta\sum_r E_rn_r-\alpha\sum_r n_r) \\
+        &=\sum_{\{n_r\}}\left(\prod_r \frac{1}{n_r!}\right)\prod_r\left(\e^{-\beta E_r-\alpha}\right)^{n_r} \\
+        &=\sum_{\{n_r\}}\prod_r \frac{\left(\e^{-\beta E_r-\alpha}\right)^{n_r}}{n_r!} \\
+        &=\prod_r \sum_{n_r=0}^{\infty}\frac{\left(\e^{-\beta E_r-\alpha}\right)^{n_r}}{n_r!}\quad  \\
+        &=\prod_r \exp(\e^{-\beta E_r-\alpha})
+    \end{split}
+\end{equation}
+请读者注意，上式倒数第二步后\(n_r\)已经不再表示\(r\)这个量子态的粒子数，它整体作为一个求和变量出现，可以换成任何读者喜欢的变量如\(x\)或\(y\)。上式的核心运算即倒数第二步和式\eqref{eq:拆分巨配分函数}、式\eqref{eq:组合配分函数之玻尔兹曼系统}完全相同，因此笔者不再展示详细过程，而是采用了抽象的符号表示，希望读者能掌握这种书写方式，准确理解各符号的含义，因为这种简洁的写法更常见。看起来上式和\eqref{eq:非简并系统巨配分函数}并不一样，但是利用我们本节频繁使用的指数函数相乘等于指数部分的和，可得两式是相同的
+\begin{equation}
+    \mathcal{Z}=\prod_r \exp(\e^{-\beta E_r-\alpha})=\exp(\sum_r \e^{-\beta E_r-\alpha})=\exp(e^{-\alpha}Z_1)
+\end{equation}
+
+至此我们完成了本节的所有任务，用单个粒子的量子态信息组合得到了系统的巨配分函数。玻色系统和费米系统的结果是优美的，而玻尔兹曼系统的结果并不如人意，不过并无大碍，玻尔兹曼系统交给正则系综理论即可。本节的副标题为“求和的艺术”，读者不难看出我们的运算是把巨配分函数的对态求和变成对分布求和。直观来看，我们进一步把对分布的求和变成了对变量的求和，而大部分系统的粒子量子态有无穷多个，所以我们实际上在对无穷个变量求和。从另一视角，我们在计算最概然分布时提及可以把分布看成一个函数，所以我们是在对函数求和。把求和拓展成积分，这两种视角就是对无穷个变量积分和对函数积分（即泛函积分），读者将在量子力学中接触这种运算，即大名鼎鼎的费曼路径积分。读者应该是第一次接触这种特殊运算，它实质上并不等同与有限个变量的求和，因为没有人知道无穷会带来什么，我们凭感觉完成了所有运算，而严谨的定义补充将交给数学家完成。
+
+\section{平均分布}
+上一节我们从分布入手，拆分了近独立系统的巨配分函数，本节我们将计算近独立系统的平均分布，即每个粒子量子态上的平均粒子数。很早之前我们计算了近独立系统的最概然分布，不过两者的出发点不同，平均分布着眼于统计平均，而最概然分布着眼于取极值，此外我们计算最概然分布的时候计算的是一个能级上的粒子数而不是一个量子态上的粒子数。两者的出发点不同，但我们将看到，两者给出相同的表达式。
+
+为了计算平均分布首先要得到平均分布的统计表达式。特性函数对此无能为力，因为平均分布并不是宏观热力学量，我们必须从最基础的巨正则分布出发得到它的表达式。回想内能的统计表达式，不难发现计算依赖于巨正则分布的指数位置有能量，所以为了计算平均分布的表达式，必须在指数位置凑出分布。根据上一节的经验，不难写成如下形式的巨正则分布
+\begin{equation}\label{eq:巨正则系综分布概率}
+    P_{\{n_r\}}=\frac{1}{\mathcal{Z}}W(\{n_r\})\prod_r \e^{(-\beta E_rn_r-\alpha n_r)}
+\end{equation}
+对于玻色系统和费米系统，\(W(\{n_r\})=1\)。对于玻尔兹曼系统，\(W(\{n_r\})=\prod_r \frac{N!}{n_r!}\)或者\(W(\{n_r\})=\prod_r \frac{1}{n_r!}\)都不怎么合适，前者意味着一个可能发散的巨配分函数，而后者对应满足非简并条件的不可分辨系统。不过接下来的运算表明，这个因子的具体表达式不影响平均分布的统计表达式，因此我们不追究其具体形式。
+
+为了避免符号混乱，我们现在专注于计算\(r^*\)这个量子态的平均粒子数即\(\bar{n}_{r^*}\)，最后把结果中的\(r^*\)换回\(r\)即可。回想系统内能的计算，系统的能量是随机变量，为了计算它的期望，我们并没有求出能量服从的分布律，而是把能量视为系统量子态这个随机变量的函数。给定系统的一个量子态，这就确定了系统的能量和概率，我们本质是在使用随机变量的函数的期望公式。平均分布的计算类似，给定系统的一个特定的分布\(\{n_r\}\)，其中\(r^*\)量子态的粒子数是确定的，式\eqref{eq:巨正则系综分布概率}给出确定的概率，所以我们把\(n_{r^*}\)视为\(\{n_r\}\)的函数，其期望由下式\footnote{这个式子和\(U=\bar{E}=\sum_s E_sP_s\)完全相同，只是这里式中有点符号混乱，我们用同一个符号表示随机变量和它的值。式中\(\bar{n}_{r^*}\)中的\(n_{r^*}\)表示随机变量，而紧跟在求和号后的\(n_{r^*}\)表示它的取值，两个量含义显著不同，但我们使用了同一个符号。实际上这种符号混乱很常见，经常性地混用随机变量和它的取值，相信读者不会混淆}给出
+\begin{equation}
+    \bar{n}_{r^*}=\sum_{\{n_r\}}n_{r^*}P_{\{n_r\}}=\frac{1}{\mathcal{Z}}\sum_{\{n_r\}}W(\{n_r\})n_{r^*}\prod_r \e^{(-\beta E_rn_r-\alpha n_r)}
+\end{equation}
+按照计算内能的思路，下一步就是拼凑求导，即
+\begin{equation}
+    \begin{split}
+        \bar{n}_{r^*}&=\frac{1}{\mathcal{Z}}\sum_{\{n_r\}}W(\{n_r\})n_{r^*}\e^{(-\beta E_{r^*}n_{r^*}-\alpha n_{r^*})}\prod_{r\neq r^*} \e^{(-\beta E_rn_r-\alpha n_r)} \\
+        &=\frac{1}{\mathcal{Z}}\sum_{\{n_r\}}W(\{n_r\})\left(-\frac{1}{\beta}\pdv{\e^{(-\beta E_{r^*}n_{r^*}-\alpha n_{r^*})}}{E_{r^*}}\right)\prod_{r\neq r^*} \e^{(-\beta E_rn_r-\alpha n_r)} \\
+        &=-\frac{1}{\beta}\frac{1}{\mathcal{Z}}\pdv{E_{r^*}}\sum_{\{n_r\}}W(\{n_r\})\e^{(-\beta E_{r^*}n_{r^*}-\alpha n_{r^*})}\prod_{r\neq r^*} \e^{(-\beta E_rn_r-\alpha n_r)} \\
+        &=-\frac{1}{\beta}\frac{1}{\mathcal{Z}}\pdv{E_{r^*}}\sum_{\{n_r\}}W(\{n_r\})\prod_{r} \e^{(-\beta E_rn_r-\alpha n_r)} \\
+        &=-\frac{1}{\beta}\frac{1}{\mathcal{Z}}\pdv{\mathcal{Z}}{E_{r^*}}=-\frac{1}{\beta}\pdv{\ln\mathcal{Z}}{E_{r^*}}
+    \end{split}
+\end{equation}
+上式推导过程中，\(\e^{(-\beta E_{r^*}n_{r^*}-\alpha n_{r^*})}\)对\(\beta\)或\(\alpha\)求导都可以凑出\(n_{r^*}\)，之所以没这样做，是因为\(\displaystyle \prod_{r\neq r^*} \e^{(-\beta E_rn_r-\alpha n_r)}\)中也有\(\beta\)和\(\alpha\)，对两者求导会导致求导无法移出求和号，进而无法凑出巨配分函数。虽然推导过程略显繁琐，但平均分布的表达式是很简洁的，一如内能和粒子数这种直接统计出来的物理量，平均分布也是巨配分函数的对数的导数
+\begin{equation}
+    \bar{n}_r=-\frac{1}{\beta}\pdv{\ln\mathcal{Z}}{E_r}
+\end{equation}
+
+请读者注意，对于考虑相互作用的系统，分布这一概念仍有意义，但上式给出的平均分布只能用于近独立系统。因为上式的推导过程用到了系统的能量是各粒子的能量和，这只对近独立系统成立。将近独立系统的巨配分函数带入上式就能求出不同系统的平均分布，这将稍后计算。下面，我们通过一个例题猜出平均分布的另一表达式。
+\begin{example}
+    考虑平均粒子数和平均分布的关系，给出平均分布的表达式。
+    \begin{solution}
+        如果我们不想从头出发推导平均分布的表达式，考虑现有的物理量和分布的关系或许是有帮助的。因为分布是各量子态的粒子数，因此\(N=\sum_r n_r\)是一个很诱人的关系式。对该式取期望，可得
+        \begin{equation}
+            \bar{N}=\sum_r \bar{n}_r
+        \end{equation}
+        另一方面，我们知道平均粒子数的表达式，而且近独立系统的巨配分函数可以写成各子项的连乘，因此我们有
+        \begin{equation}
+            \bar{N}=-\pdv{\ln\mathcal{Z}}{\alpha}=-\pdv{\alpha}\ln(\prod_r \mathcal{Z}_r)=-\pdv{\alpha}\sum_r \ln\mathcal{Z}_r=\sum_r\left(-\pdv{\ln\mathcal{Z}_r}{\alpha}\right)
+        \end{equation}
+        根据这两个式子，我们可以大胆“猜测”
+        \begin{equation}
+            \bar{n}_r=-\pdv{\ln\mathcal{Z}_r}{\alpha}
+        \end{equation}
+        之所以说猜测是因为\(a+b=c+d\)显然不可以推出来\(a=c\)和\(b=d\)。不过可以证明上式确实是正确的，这里不做证明，因为我们不会使用该式计算平均分布。本例题只是为了内容的完整性，因为这种形式的平均分布会出现在很多教材上。
+    \end{solution}
+\end{example}
+
+我们先计算玻色系统和费米系统的平均分布，利用上一节求出的巨配分函数，带入平均分布的表达式运算即可。对于玻色系统，巨配分函数为
+\begin{equation}
+    \ln\mathcal{Z}=-\sum_r \ln(1-\e^{-\alpha-\beta E_r})
+\end{equation}
+其平均分布为
+\begin{equation}
+    \begin{split}
+        \bar{n}_r&=\frac{1}{\beta}\pdv{E_r}\sum_{r'}\ln(1-\e^{-\alpha-\beta E_{r'}}) \\
+        &=\frac{1}{\beta}\pdv{E_r}\ln(1-\e^{-\alpha-\beta E_{r}}) \\
+        &=\frac{1}{\beta}\frac{1}{1-\e^{-\alpha-\beta E_{r}}}\big(-\e^{-\alpha-\beta E_{r}}\big)(-\beta) \\
+        &=\frac{1}{\e^{\alpha+\beta E_{r}}-1}
+    \end{split}
+\end{equation}
+上式对\(E_r\)求偏导时，求和项中只有\(r'=r\)的一项与之相关，别的项都是常数，因此对一个求和式求导等于对一项的求导。对于费米系统，巨配分函数为
+\begin{equation}
+    \ln\mathcal{Z}=\sum_r\ln(1+\e^{-\alpha-\beta E_{r}})
+\end{equation}
+其平均分布为
+\begin{equation}
+        \bar{n}_r=-\frac{1}{\beta}\pdv{E_r}\sum_{r'}\ln(1+\e^{-\alpha-\beta E_{r'}})=-\frac{1}{\beta}\pdv{E_r}\ln(1+\e^{-\alpha-\beta E_{r}})=\frac{1}{\e^{\alpha+\beta E_{r}}+1}
+\end{equation}
+接着讨论满足非简并条件的不可分辨系统，其巨配分函数为
+\begin{equation}
+    \ln\mathcal{Z}=\sum_r \e^{-\alpha-\beta E_{r}}
+\end{equation}
+由此可得其平均分布为
+\begin{equation}
+        \bar{n}_r=-\frac{1}{\beta}\pdv{E_r}\sum_{r'}\e^{-\alpha-\beta E_{r'}}=-\frac{1}{\beta}\pdv{E_r}\e^{-\alpha-\beta E_{r}}=\e^{-\alpha-\beta E_{r}}
+\end{equation}
+对于玻尔兹曼系统，虽然它的巨配分函数是发散的，但我们依然不严谨地讨论一下它的平均分布。
+\begin{example}
+    认为玻尔兹曼系统的巨配分函数为\(\mathcal{Z}=\frac{1}{1-\e^{-\alpha}Z_1}\)，计算其平均分布。
+    \begin{solution}
+        将这个巨配分函数带入平均分布
+        \begin{equation}
+            \bar{n}_r=\frac{1}{\beta}\pdv{E_r}\ln(1-\e^{-\alpha}Z_1)=\frac{1}{\beta}\frac{1}{1-\e^{-\alpha}Z_1}(-\e^{-\alpha})\e^{-\beta E_r}(-\beta)
+        \end{equation}
+        利用之前计算的粒子数公式\(N=\frac{1}{1-\e^{-\alpha}Z_1}Z_1\e^{-\alpha}\)可得
+        \begin{equation}
+            \bar{n}_r=\frac{N}{Z_1}\e^{-\beta E_r}
+        \end{equation}
+        再利用之前计算的玻尔兹曼系统的化学势\(\e^{-\alpha}Z_1=1\)，平均分布可写成
+        \begin{equation}
+            \bar{n}_r=N\e^{-\alpha-\beta E_r}
+        \end{equation}
+        读者可能对这个平均分布不以为然，认为这只是数学把戏。实际上上一节的例题已有所暗示，虽然巨配分函数会发散，但得到的物理结论都是正确的。请读者观察本节导出平均分布统计表达式的推导过程，其中我们没有使用巨正则系综特有的参量\(\alpha\)，所以可以把整个过程改写，得到正则系综中平均分布的统计表达式\(\bar{n}_r=-\frac{1}{\beta}\pdv{\ln Z}{E_r}\)。这个式子在正则系综部分没有推导因为不可分辨系统的配分函数无法计算，这个式子意义不大。把玻尔兹曼系统的配分函数带入该式，我们又能得到本例题推导出的平均分布。
+    \end{solution}
+\end{example}
+至此我们实际上求出了四种平均分布，将它们罗列如下
+\begin{subequations}
+    \begin{align}
+        \displaystyle &\bar{n}_r=N\e^{-\alpha-\beta E_{r}} \quad\text{玻尔兹曼系统}\label{eq:玻尔兹曼系统平均分布}\\
+        \displaystyle &\bar{n}_r=\e^{-\alpha-\beta E_{r}} \quad\text{满足非简并条件的不可分辨系统}\label{eq:非简并系统平均分布}\\
+        \displaystyle &\bar{n}_r=\frac{1}{\e^{\alpha+\beta E_{r}}-1} \quad\text{玻色系统}\label{eq:玻色系统平均分布}\\
+        \displaystyle &\bar{n}_r=\frac{1}{\e^{\alpha+\beta E_{r}}+1} \quad\text{费米系统}\label{eq:费米系统平均分布}
+    \end{align}
+\end{subequations}
+
+读者对这些表达式应该不算陌生，它们和式\eqref{eq:三大最概然分布}形式相当一致。我们先讨论一下后两个式子，即玻色系统和费米系统的平均分布，它们和最概然分布形式完全一致，区别仅在于这里的式子右侧没有简并度，因为这里我们讨论的是一个量子态而不是一个能级。再考虑到平均分布满足
+\begin{equation}
+    \begin{cases}
+        U=\sum_rE_r\bar{n}_r \\
+        N=\sum_r\bar{n}_r
+    \end{cases}
+\end{equation}
+这和最概然分布满足的两个式子完全相同，所以我们没理由不认为玻色系统和费米系统的最概然分布和平均分布相同。考虑到系统的最概然特性，也就是最概然分布所占据的微观状态数相较其他分布极其大，分布的概率分布是一个极其尖锐的峰，所以最概然分布和平均分布相同是自然的。
+
+这一观点并不只适用于不可分辨系统，对于玻尔兹曼系统同样如此。有趣的是，对比它的平均分布和最概然分布，会发现形式不是完全一致的。其实两者依然相等，请读者不要忘了，我们没有确定最概然分布中的\(\alpha\)和\(\beta\)这两个参量的物理意义，我们是通过平均分布和最概然分布相同，反过来确定两者的物理意义的\footnote{正因如此，我们在推导最概然分布的时候，使用\(\alpha\)和\(\beta\)表示两个拉格朗日乘子}。所以这里的平均分布意味着最概然分布中的
+\begin{equation}
+    \alpha_{\text{最概然}}=\alpha-\ln N
+\end{equation}
+其中\(\alpha\)就是本章引入的\(\alpha=-\beta\mu\)。
+
+根据这个结果，不知读者是否发现一些蹊跷。在式\eqref{eq:三大最概然分布}中，玻尔兹曼分布的\(\alpha\)和玻色、费米分布的\(\alpha\)是不同的，前者由上式给出，而后者就是\(-\beta\mu\)。但是我们在讨论非简并条件的时候，提到过当\(\e^{\alpha+\beta E_i}\gg1\)时，玻色分布和费米分布变得相同且等于玻尔兹曼分布，现在看来这是错误的。非简并条件满足时，两个分布退化为\eqref{eq:非简并系统平均分布}而不是\eqref{eq:玻尔兹曼系统平均分布}。换句话说，非简并的不可分辨系统，它的最概然分布和玻尔兹曼系统的最概然分布是不同的。不过我们当时的错误观点没有任何影响，因为我们在这个错误观点的后续内容中只使用了这个错误观念的前半部分，当非简并条件成立时，玻色分布和费米分布确实变得相同了，我们从未用玻尔兹曼分布去处理任何热力学问题。这些讨论都是理论细节之处的差别，从应用角度，因为化学势并不好测量，实际上我们往往把玻尔兹曼分布写成\(n_i\propto\e^{-\beta E_i}\)，其中的比例因子通过归一化确定。也就是说提及一个系统服从玻尔兹曼分布时，不必执着于这个所谓的玻尔兹曼分布到底是式\eqref{eq:非简并系统平均分布}还是式\eqref{eq:玻尔兹曼系统平均分布}
+
+确定最概然分布的参数后，或者说就从本节导出的平均分布\eqref{eq:玻色系统平均分布}和\eqref{eq:费米系统平均分布}出发，我们可以深入地讨论一下非简并条件。非简并条件是\(\e^{\alpha+\beta E_i}\gg1\)恒成立，即\(\e^{\alpha}\gg\e^{-\beta E_i}\)恒成立。考虑到\(\beta=\frac{1}{kT}>0\)且粒子的能级\(E_i\)往往是有下限而无上限的\footnote{有意思的是，为了让\(\e^{\alpha}\gg\e^{-\beta E_i}\)这个式子本身有意义，要么\(\beta\)为正且能级有下限，要么\(\beta\)为负且能级有上限，在\ref{subsec:负温度}小节中我们讨论过温度和能级上下限的关系，与此处的要求是契合的}，因此非简并条件等价于\(\e^{\alpha}\gg\e^{-\beta E_0}\)。当基态能量非负时，\(\e^{\alpha}\gg1\)能使该式成立；当基态能量为负数时，只要\(\e^{\alpha}\)足够大该式就能成立，而\(\e^{\alpha}\)足够大可以不负责任地写成\(\e^{\alpha}\gg1\)。因此非简并条件可以认为是
+\begin{equation}
+    \e^{\alpha}\gg 1
+\end{equation}
+这也是在教材中出现较多的非简并条件。倘若读者对这一结论不满意，后文计算量子理想气体的热力学量后，我们会看到\(\e^{\alpha}\gg1\)确实会使量子理想气体的热力学量退化为经典理想气体的热力学量。
+
+考虑到\(\e^{\alpha}=\e^{-\beta\mu}\)，而化学势也不易测量，因此我们试图继续对非简并条件处理。理想的处理方式自然是把系统的化学势算出来，把它表示为易于测量的热力学量的函数，但这对于不可分辨系统来说是很困难的，因为从巨正则系综理论算出的\(\bar{N}(\mu,V,T)\)中很难解析反解出化学势的表达式，为此我们采取一个取巧的手段。假设我们考查的系统已经满足非简并条件，那么它的化学势是易于计算的，即
+\begin{equation}
+    -\beta\mu=\pdv{\ln Z}{N}=\pdv{N}(N\ln Z_1-N\ln N+N)=\ln Z_1-\ln N=\ln\frac{Z_1}{N}
+\end{equation}
+这样非简并条件就可以写成
+\begin{equation}
+    \e^{\alpha}=\e^{-\beta\mu}=\frac{Z_1}{N}\gg 1
+\end{equation}
+单粒子配分函数只是温度和体积的函数，因此上式很容易验证。但上式的推导假定了系统已经满足非简并条件，这意味着上式比非简并条件更弱，上式成立是不能完全确定系统满足非简并条件，最终要由实验检验。但是如果一个系统不满足上式，那么它肯定不满足非简并条件，后文的自由电子气就是这样的模型。
+
+\section{实例}
+本节我们要用巨正则系综的理论处理两个具体问题，分别是经典理想气体和简单吸附模型。前者是我们的老朋友，而后者是一个颇有意思的模型，读者会看到，我们给出的吸附模型实际上是一个单能级多重简并的费米系统。这两个模型是如此地简单以至于我们可以用三种系综中的任意一个来处理它们，此处选择它们并不是为了展示巨正则系综理论的优势，而是展示巨正则系综处理问题的基本程序。
+
+首先来看经典理想气体，它满足非简并条件，系统的巨配分函数为
+\begin{equation}
+    \mathcal{Z}=\exp(\e^{-\alpha}Z_1)\quad Z_1=\frac{V}{\lambda_{\text{th}}^3}\qquad \lambda_{\text{th}}=\hbar\sqrt{\frac{2\pi}{m\k T}}
+\end{equation}
+热力学量的计算是纯粹的数学运算，读者自己尝试，下面是笔者的计算方案，内能为
+\begin{equation}
+    U=-\pdv{\ln\mathcal{Z}}{\beta}=-\e^{-\alpha}\pdv{Z_1}{\beta}=-\e^{-\alpha}\left(-3V\lambda_{\mathrm{th}}^{-4}\pdv{\lambda_{\mathrm{th}}}{\beta}\right)=\frac{3}{2}\k T\e^{-\alpha}Z_1
+\end{equation}
+其中热波长对\(\beta\)的偏导计算如下
+\begin{equation}
+    \pdv{\lambda_{\mathrm{th}}}{\beta}=\pdv{A\sqrt{\beta}}{\beta}=\frac{A}{2\sqrt{\beta}}=\frac{\lambda_{\mathrm{th}}}{2\beta}
+\end{equation}
+其中\(A\)是一个比例系数，把各种常量打包进\(A\)里面会使计算简单很多。接下来计算粒子数
+\begin{equation}
+    N=-\pdv{\ln\mathcal{Z}}{\alpha}=\e^{-\alpha}Z_1
+\end{equation}
+从粒子数公式中可以反解出系统的化学势为
+\begin{equation}
+    \mu=\k T\ln\frac{N}{Z_1}=\k T\ln(\frac{N}{V}\lambda_{\mathrm{th}}^3)=\k T\ln\left[\frac{N\hbar^3}{V}\left(\frac{2\pi}{m\k T}\right)^{\frac{3}{2}}\right]
+\end{equation}
+粒子数公式\(N=\e^{-\alpha}Z_1\)将用来消去其余热力学量中的化学势，比如内能为
+\begin{equation}
+    U=\frac{3}{2}N\k T
+\end{equation}
+对应的热容为\(C_V=\frac{3}{2}N\k\)。系统的物态方程为
+\begin{equation}
+    p=-\frac{J}{V}=\frac{\k T}{V}\ln\mathcal{Z}=\frac{\k T}{V}\e^{-\alpha}Z_1=\frac{N\k T}{V}
+\end{equation}
+最后我们计算系统的熵，熵的计算要格外小心，因为对求\(T\)偏导时要固定化学势，所以\(\alpha=-\frac{\mu}{\k T}\)也要参与求导运算
+\begin{equation}
+    S=-\left(\pdv{J}{T}\right)_{\mu,V}=\left(\pdv{\k T\ln\mathcal{Z}}{T}\right)_{\mu,V}=\k N+\k T\left(\pdv{\e^{-\alpha}Z_1}{T}\right)_{\mu,V}
+\end{equation}
+上式第二项的计算如下，同样我们令\(Z_1=AT^{\frac{3}{2}}\)
+\begin{equation}
+    \left(\pdv{\e^{-\alpha}Z_1}{T}\right)_{\mu,V}=-\pdv{\alpha}{T}\e^{-\alpha}Z_1+\e^{-\alpha}\left(\frac{3}{2}AT^{\frac{1}{2}}\right)=-\frac{\mu}{\k T^2}\e^{-\alpha}Z_1+\frac{3}{2T}\e^{-\alpha}Z_1=-\frac{N}{T}\ln(\frac{N}{Z_1})+\frac{3N}{2T}
+\end{equation}
+所以熵的最终表达式为
+\begin{equation}
+    S=N\k\ln(\frac{Z_1}{N})+\frac{5}{2}N\k=N\k\ln\left[\frac{V}{N\hbar^3}\left(\frac{m\k T}{2\pi}\right)^{\frac{3}{2}}\right]+\frac{5}{2}N\k
+\end{equation}
+
+不难看出这里算出的所有热力学量和之前正则系综、微正则系综的结论是相同的，这是自然的，不同系综理论应该对同一个模型做出相同的热力学预言。对于经典理想气体，巨正则系综没有任何计算上的优势，甚至由于要消去化学势，额外增加了计算量。
+
+接下来我们考虑吸附现象，我们给出一个简单的吸附模型。假设一个固体的表面有\(N_0\)个空位或者说所谓的吸附中心，每一个吸附中心空的时候能量为0，如果吸附气体粒子，那么能量为\(-\varepsilon\)，各个吸附中心没有相互作用。固体浸没在一个气体环境中，与气体交换能量和粒子，平衡时，表面和气体将有共同的温度和化学势。我们的任务是计算这个表面的平衡吸附率\(\eta=\frac{\bar{N}}{N_0}\)，即平衡时表面的粒子数。
+
+表面是一个开放系统，因此用本章的巨正则系综理论处理是顺理成章的。该系统显然是近独立系统，倘若有读者从吸附中心可分辨的角度出发，认为表面是玻尔兹曼系统，这是不对的。玻尔兹曼系统指的是系统中的粒子可分辨，而这里考虑的粒子是表面吸附的气体分子，吸附中心不是系统中的粒子。那么这些表面的气体分子是可分辨的吗？乍一看，气体分子被吸附后就局域在吸附中心附近，看起来是可分辨的。但粒子可分辨要求粒子始终定域在一个位置附近，这里的气体分子只在被吸附的时候是定域的。吸附平衡是动态平衡，某一时刻，一个吸附中心有粒子，过一会这个粒子可能就会挣脱表面进入气体，之后这个吸附中心再次吸附粒子时，我们根本无法分辨这到底是哪一个粒子，我们所知道的仅仅是此吸附中心有一个粒子。那么系统是玻色系统还是费米系统呢？看起来这取决于气体分子本身，但细想一步，就我们考虑的表面系统而言，一个吸附中心要么空着，要么吸附一个粒子，这和费米子的泡利不相容原理极像。也就是说我们把\(N_0\)个吸附中心当成\(N_0\)个简并量子态，把气体分子视为费米子，这种观点完美符合我们的吸附模型。所以从统计的角度说\footnote{正常来说，倘若一个粒子量子态上不能容纳两个及以上粒子，那么粒子就是费米子，系统也自然是费米系统。这属于执果索因，这种逻辑建立在粒子没有别的约束，即其满足泡利不相容原理是内禀的情况下。但此处是因为吸附中心的限制，我们把吸附中心抽象成量子态，所以气体分子满足泡利不相容原理是吸附中心附加的，我们不能由此倒推气体分子是费米子，实际上气体分子是费米子或玻色子根本不影响结果，所以我们称之为统计物理上的费米系统}，系统是一个费米系统，考虑到气体分子一旦不吸附就脱离表面了，也就是离开系统了，所以吸附中心空着不对应量子态，即每个气体分子有且仅有\(N_0\)个能量都为\(-\varepsilon\)的量子态。
+
+确定了表面系统是费米系统，我们自然可以用费米分布计算平均粒子数，但此处我们仍从巨配分函数出发，这符合系综理论的一般步骤。费米系统的巨配分函数为\(\ln\mathcal{Z}=\sum_r\ln(1+\e^{-\alpha-\beta E_{r}})\)，吸附模型的\(N_0\)个粒子量子态能量均为\(-\varepsilon\)，所以巨配分函数为\footnote{不少教材通过\(\mathcal{Z}=\sum_{N=0}^{N_0}\e^{-\alpha N}Z_N=\sum_{N=0}^{N_0}C_{N_0}^N\e^{-\alpha N+\beta\varepsilon N}=(1+\e^{-\alpha+\beta\varepsilon})^{N_0}\)计算巨配分函数，最后一步用到了二项式定理。式中\(Z_N\)为系统粒子数为\(N\)时的配分函数，相信读者会计算，读者可以从这个配分函数出发，利用正则系综理论计算一下表面的吸附率}
+\begin{equation}
+    \ln\mathcal{Z}=N_0\ln(1+\e^{-\alpha+\beta\varepsilon})
+\end{equation}
+对\(\alpha\)求导即给出平衡时系统的粒子数
+\begin{equation}
+    \bar{N}=-N_0\frac{1}{1+\e^{-\alpha+\beta\varepsilon}}(-\e^{-\alpha+\beta\varepsilon})=N_0\frac{1}{\e^{\alpha-\beta\varepsilon}+1}
+\end{equation}
+即吸附率为
+\begin{equation}
+    \eta=\frac{\bar{N}}{N_0}=\frac{1}{1+\e^{-\beta(\varepsilon+\mu)}}
+\end{equation}
+读者可以尝试用微正则系综和正则系综的方法计算吸附率，会发现巨正则系综并没有明显的计算优势。
+
+固体浸没在气体中与之达到吸附平衡，不妨假设气体为经典理想气体，那么我们可以用经典理想气体的化学势
+\begin{equation}
+    -\beta\mu=-\ln\left[\frac{N\hbar^3}{V}\left(\frac{2\pi}{m\k T}\right)^{\frac{3}{2}}\right]=-\ln\left[\frac{p\hbar^3}{\k T}\left(\frac{2\pi}{m\k T}\right)^{\frac{3}{2}}\right]
+\end{equation}
+替换吸附率中的化学势，上式中我们用物态方程替换了无法测量的环境气体的粒子数和体积。替换后的吸附率为
+\begin{equation}
+    \eta=\frac{1}{1+\e^{-\beta\varepsilon}\e^{-\beta\mu}}=\frac{1}{1+\e^{-\beta\varepsilon}\frac{\k T}{p\hbar^3}\left(\frac{m\k T}{2\pi}\right)^{3/2}}=\frac{p}{p+\left(\frac{m}{2\pi\hbar^2}\right)^{3/2}(\k T)^{5/2}\e^{-\varepsilon/(\k T)}}
+\end{equation}
+不难看出，吸附率随压强的增大而增大，随温度的升高而减小，是较符合常理的\footnote{实际上对于这个如此简单的吸附模型，笔者怀疑根本没有实际系统与之对应，这里讨论更多是为了和大多教材保持一致}。
+
+\section{巨正则系综的粒子数涨落和能量涨落}
+巨正则系综研究开放系统，因此系统的能量和粒子数是不确定的，它们的期望为热力学量，而标准差就是它们的涨落。本节分析系统的能量和粒子数的相对涨落\footnote{涨落指的是随机变量的标准差（或者也可以是方差），出于习惯有时会称为系统的涨落或系综的涨落，读者结合上下文理解即可}，以此说明三种系综的等价性。
+
+首先计算粒子数的涨落，为此要先计算\(N^2\)的期望
+\begin{equation}
+    \expval{N^2}=\frac{1}{\mathcal{Z}}\sum_s N_s^2\e^{-\beta E_s-\alpha N_s}=\frac{1}{\mathcal{Z}}\pdv[2]{\mathcal{Z}}{\alpha}
+\end{equation}
+经验告诉我们要计算一下\(\ln\mathcal{Z}\)对\(\alpha\)的二阶导
+\begin{equation}
+    \pdv[2]{\ln\mathcal{Z}}{\alpha}=\pdv{\alpha}(\frac{1}{\mathcal{Z}}\pdv{\mathcal{Z}}{\alpha})=-\frac{1}{\mathcal{Z}^2}\left(\pdv{\mathcal{Z}}{\alpha}\right)^2+\frac{1}{\mathcal{Z}}\pdv[2]{\mathcal{Z}}{\alpha}
+\end{equation}
+不难看出，粒子数的涨落为
+\begin{equation}
+    D(N)=\expval{N^2}-\expval{N}^2=\frac{1}{\mathcal{Z}}\pdv[2]{\mathcal{Z}}{\alpha}-\frac{1}{\mathcal{Z}^2}\left(\pdv{\mathcal{Z}}{\alpha}\right)^2=\pdv[2]{\ln\mathcal{Z}}{\alpha}=-\left(\pdv{\bar{N}}{\alpha}\right)_{\beta,V}=\k T\left(\pdv{\bar{N}}{\mu}\right)_{\beta,V}
+\end{equation}
+化学势是不易测量的，因此我们要用热力学关系把化学势消去，这由下面的例题完成。
+\begin{example}
+    \(\beta\)和\(T\)有一一对应关系，因此固定\(\beta\)求偏导和固定\(T\)求偏导等价。试化简\(\left(\pdv{N}{\mu}\right)_{T,V}\)
+    \begin{solution}
+        因为化学势是单粒子吉布斯自由能，所以化学势满足微分方程\(\dd\mu=\frac{V}{N}\dd p-\frac{S}{N}\dd T\)，对\(G=N\mu\)两边全微分就能得到该式。化学势的微分中有压强和温度的微分，这启发我们在偏导中插入压强，即
+        \begin{equation}
+            \left(\pdv{N}{\mu}\right)_{T,V}=\left(\pdv{N}{p}\right)_{T,V}\left(\pdv{p}{\mu}\right)_{T,V}=\left(\pdv{N}{p}\right)_{T,V}\frac{N}{V}
+        \end{equation}
+        上式出现的物理量已是易于测量的，不过对于\(\left(\pdv{N}{p}\right)_{T,V}\)我们还能进一步变形
+        \begin{equation}
+            \left(\pdv{N}{p}\right)_{T,V}=-\frac{\left(\pdv{V}{p}\right)_{T,N}}{\left(\pdv{V}{N}\right)_{T,p}}=\frac{V\kappa_T}{\frac{V}{N}}=N\kappa_T
+        \end{equation}
+        上式第一个等号后，分子中正好对应等温压缩系数\footnote{请读者注意，等温压缩系数的定义暗含了粒子数不变，\(\left(\pdv{V}{p}\right)_{T,\mu}\)并不是等温压缩系数}，分母的处理来自系统的广延性。把\(V\)看作\((N,T,p)\)的函数，当系统扩大\(\lambda\)倍后，广延量对应扩大而强度量不变即\(V(\lambda N,T,p)=\lambda V(N,T,p)\)，该式对\(\lambda\)求偏导可得
+        \begin{equation}
+            \left(\pdv{V}{(\lambda N)}\right)_{T,p}N=V
+        \end{equation}
+        令\(\lambda=1\)即得\(\left(\pdv{V}{N}\right)_{T,p}=\frac{V}{N}\)。实际上这可以当成一个小结论记住：强度量固定时，两个广延量的偏导就是两者的商。根据这个结论，可以立马看出\(\mu=\left(\pdv{G}{N}\right)_{T,p}=\frac{G}{N}\)，这也是为什么化学势是单粒子吉布斯自由能而不是单粒子别的什么能的原因。综上
+        \begin{equation}
+            \left(\pdv{N}{\mu}\right)_{T,V}=\frac{N^2\kappa_T}{V}
+        \end{equation}
+    \end{solution}
+\end{example}
+根据上述例题的结论，粒子数的相对涨落为
+\begin{equation}
+    \frac{\sqrt{D(N)}}{\bar{N}}=\sqrt{\frac{\k T\bar{N}^2\kappa_T}{V\bar{N}^2}}=\sqrt{\frac{\k T\kappa_T}{V}}
+\end{equation}
+取热力学极限，即粒子数和体积趋于无穷而粒子数密度保持有限，那么量级上\(\sqrt{\frac{\k T\kappa_T}{V}}\sim\frac{1}{\sqrt{N}}\)，即粒子数的相对涨落也是以\(\frac{1}{\sqrt{N}}\)的速率趋于0。所以对于宏观系统，完全可以认为其粒子数固定，巨正则系综给出和前两个系综相同的热力学结论。但大自然不甘于这样无趣，读者回看正则系综能量的相对涨落，其中的强度量只有温度，而此处粒子数的相对涨落还与等温压缩率有关。对于一个实际系统，它的温度总是有限的，但等温压缩率却不一定，典型的例外\footnote{对于一般系统，这是笔者知道的唯一例外，还有一个压缩率发散的例子是后文介绍的光子气体}就是相变。读者回忆范德瓦耳斯气体的等温相变曲线，临界等温曲线即临界温度的确定来自\(p\)对\(V\)的一阶导和二阶导为0，也就是说，临界点气体的等温压缩率是发散的，相应的其粒子数的涨落也会发散\footnote{当然自然界不会出现无穷，这里的发散指的是压缩率特别大以至于盖过分母上的粒子数，导致实验上可以观测到粒子数的涨落效应}，这导致的实验结果就是临界乳光现象。对于这种情形，我们没有理由相信巨正则系综给出和正则系综完全一样的结论，我们应优先使用巨正则系综，因为它能给出符合实际的物理图像。
+
+现在我们计算能量的涨落，由于巨正则分布中能量和粒子数处于一个格外对称的地位，我们可以不假思索地写出能量的涨落为
+\begin{equation}
+    D(E)=\pdv[2]{\ln\mathcal{Z}}{\beta}=-\left(\pdv{U}{\beta}\right)_{\alpha,V}
+\end{equation}
+但请读者格外注意，上式并不是定容热容，因为定容热容是粒子数不变而不是\(\alpha\)不变。同样，为了消去化学势，我们开始热力学变换。注意到\(N\)也是\((\beta,\alpha,V)\)的函数，所以内能可写成\(U(\beta,N((\beta,\alpha,V)),V)\)，对\(\beta\)求导
+\begin{equation}
+    \left(\pdv{U}{\beta}\right)_{\alpha,V}=\left(\pdv{U}{\beta}\right)_{N,V}+\left(\pdv{U}{N}\right)_{\beta,V}\left(\pdv{N}{\beta}\right)_{\alpha,V}
+\end{equation}
+上式中\(\left(\pdv{U}{\beta}\right)_{N,V}\)对应定容热容，\(\left(\pdv{U}{N}\right)_{\beta,V}\)暂且不做处理，对\(\left(\pdv{N}{\beta}\right)_{\alpha,V}\)的处理来自麦克斯韦关系。考虑到
+\begin{equation}
+    N=-\left(\pdv{\ln\mathcal{Z}}{\alpha}\right)_{\beta,V}\qquad U=-\left(\pdv{\ln\mathcal{Z}}{\beta}\right)_{\alpha,V}
+\end{equation}
+利用混合偏导相等有
+\begin{equation}
+    \left(\pdv{N}{\beta}\right)_{\alpha,V}=\left(\pdv{U}{\alpha}\right)_{\beta,V}
+\end{equation}
+把这些结果带回能量的涨落式中。巧妙的是，在\(U\)对\(\alpha\)的偏导中插入\(N\)，我们能把能量的涨落和粒子数的涨落联系起来
+\begin{equation}
+    \begin{split}
+        D(E)=-\left(\pdv{U}{\beta}\right)_{N,V}-\left(\pdv{U}{N}\right)_{\beta,V}^2\left(\pdv{N}{\alpha}\right)_{\beta,V}=D(E)_{\text{正则}}+\left(\pdv{U}{N}\right)_{\beta,V}^2D(N)
+    \end{split}
+\end{equation}
+上式最终结果中，第一项是正则系综的能量涨落，在热力学极限下，它贡献的相对涨落收敛为0。第二项是强度量乘粒子数的涨落，在热力学极限下它贡献的相对涨落等于粒子数的相对涨落。所以热力学极限下，开放系统的能量涨落和粒子数涨落相同，一般情形下都收敛为0。
+
+分析完开放系统的涨落后，我们结合封闭系统的涨落，阐述一下不同系综之间的关系，即所谓的系综等价性。本笔记只介绍了三种典型的系综，其中微正则系综是所有系综的基础，而正则系综有很强的理论价值，巨正则系综能很方便的处理量子不可分辨问题。实际上还有很多别的系综，比如化学中常用的等温等压系综，读者愿意，可以自己创造一个系综。我们下述的分析也是针对所有系综的，不仅仅是本笔记的三种典型系综。
+
+可以看到，在一般的情形下，热力学极限下，不同系综的相对涨落都收敛为0，也就是说不同系综的区别仅在于自变量或者说特性函数的选择不同。实践上，哪种系综方便就使用哪个系综而不必拘泥于系统本身的特点。这点在具体的模型分析中也有体现，典型的例子就是经典理想气体，每个系综理论中我们都会处理这个模型，它们给出同样的热力学量。但很显然，不同系综给出的涨落是不同的，系综等价性指的是给出相同热力学量即期望值，而涨落不是热力学量，涨落可以认为是系综自身的特点。
+
+在不一般的情况下，比如相变存在的情况下，等温压缩率可能发散，导致巨正则系综的粒子数涨落发散，但这不意味巨正则系综和正则系综给出的热力学量不同，只是在本笔记所涉及的数学层次下，我们无法回答这一问题\footnote{实际上，应该是涨落很大但仍有限，这种情况下我们无法预测不同系综给出的期望是否相等}。这也不意味着相变一定只能使用巨正则系综处理，正如前文所言，玻尔兹曼系统\footnote{一般提及玻尔兹曼系统指的是无相互作用的可分辨系统，这里只取可分辨，因为相变是相互作用的产物}不宜用巨正则系综处理而应该用正则系综，铁磁相变就玻尔兹曼系统，人们用正则系综处理获得了巨大成功。因此在这种特殊情形下对系综等价性的探讨已超过了本笔记的讨论范围\footnote{实际上是超过笔者的能力范围了，笔者对于相互作用系统的系综统计可以说一无所知}，读者在后续的学习中自行挖掘吧。
+
+最后要强调一点，系综等价性的前提是热力学极限。对于宏观系统，可以认为它是热力学极限的良好近似，但到底多么大才算宏观系统是一个模糊的概念，笔者不知是否有理论探讨这一点。对于小系统的系综统计，应谨慎地选择系综类型，当然实验是检验理论的唯一标准，无论怎么选择，最后都要结合实验抉择。
 \end{document}
