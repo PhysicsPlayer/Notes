@@ -21,7 +21,7 @@
 *.vrb
 
 # --- Build directories ---
-build/
+
 out/
 _build/
 

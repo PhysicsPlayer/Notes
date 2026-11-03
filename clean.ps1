@@ -5,7 +5,12 @@ $rootDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Path $MyInvoc
 if (-not $rootDir) { $rootDir = Get-Location }
 
 # Extensions to clean
-$extensions = @("*.aux", "*.bcf", "*.log", "*.out", "*.run.xml", "*.toc", "*.synctex.gz")
+$extensions = @(
+    "*.aux", "*.bbl", "*.bcf", "*.blg", "*.fdb_latexmk", "*.fls",
+    "*.idx", "*.ilg", "*.ind", "*.lof", "*.log", "*.lot", "*.out",
+    "*.run.xml", "*.synctex.gz", "*.toc", "*.xdv", "*.nav", "*.snm",
+    "*.vrb"
+)
 
 Write-Host "Cleaning LaTeX intermediate files..." -ForegroundColor Cyan
 

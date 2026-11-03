@@ -8,8 +8,10 @@ root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Extensions to clean
 extensions=(
-  "*.aux" "*.bcf" "*.log" "*.out" "*.run.xml" "*.toc"
-  "*.synctex.gz"
+  "*.aux" "*.bbl" "*.bcf" "*.blg" "*.fdb_latexmk" "*.fls"
+  "*.idx" "*.ilg" "*.ind" "*.lof" "*.log" "*.lot" "*.out"
+  "*.run.xml" "*.synctex.gz" "*.toc" "*.xdv" "*.nav" "*.snm"
+  "*.vrb"
 )
 
 cyan="\033[36m"; gray="\033[90m"; green="\033[32m"; reset="\033[0m"

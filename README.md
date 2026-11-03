@@ -1,17 +1,39 @@
 ## 项目简介
 这是我写物理感想的地方，不特别记录知识点，更多记录整体逻辑和零散的感悟
 
-文档采取多文档编译模式，主文档是`main.tex`，在里面指明章节标题和引用子文档。子文档位于`./Part/`文件夹下，此文件夹下一个文件夹表示一个专题（即一本独立的书），在一个专题文件夹内，一个文档表示一个章节，不写章节序号，只给出章节题目。部分专题文件夹下，一个文档即表示一本书
+项目采取多文档编译模式，主文档是`main.tex`，在里面引用一级子文档。一级子文档位于`./build/`文件夹下，此文件夹下的每一个`tex`表示一个独立的专题（即一本独立的书），在里面引用二级子文档，引用的先后顺序就是二级子文档的成书顺序。
 
-每个子文档要有完整的文档结构，开头用`\documentclass[../../main.tex]{subfiles}`指明主文档，导言区可以正常引用宏包
+二级子文档位于`./Part/`文件夹下，此文件夹下一个子文件夹表示一个专题（即一本独立的书），在一个专题文件夹内，一个`tex`表示一个章节，不写章节序号，只给出章节题目。
 
-交叉引用正常书写，无需额外操作（但只有在编译主文档是才有效，子文档编译不出来）
+每个子文档要有完整的文档结构，一级子文档开头用`\documentclass[../main.tex]{subfiles}`指明主文档，二级子文档开头用`\documentclass[../../main.tex]{subfiles}`指明主文档。子文档导言区可以正常引用宏包和设置宏命令，但建议在`main.tex`中引用和设置宏命令。
+
+交叉引用正常书写，无需额外操作（但只有在编译主文档和一级子文档时才有效，编译二级子文档时跨章节引用无效）
 
 ---
 
 ## 编译指南
-调用`xelatex`连续编译两次即可，推荐在[Visual Studio Code](https://code.visualstudio.com/)中借助[LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop)插件辅助编译
+1. 首先克隆该仓库
+	```
+	git clone https://github.com/Physicsplayer/Notes.git
+	```
+	或者
+	```
+	git clone https://gitee.com/Physicsplayer/Notes.git
+	```
 
+2. 调用`xelatex`连续编译两次即可，推荐在[Visual Studio Code](https://code.visualstudio.com/)中借助[LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop)插件辅助编译。
+
+3. 也可以在终端中调用编译脚本编译
+	```
+	./build.sh  # For Linux/MacOS
+	.\build.ps1 # For Windows
+	```
+	编译后可以调用清理脚本删除辅助文件
+	```
+	./clean.sh  # For Linux/MacOS
+	.\clean.ps1 # For Windows
+	```
+	> PS:所有脚本均由AI生成，本人对运行结果不符任何责任，请仔细阅读脚本后再运行。所有脚本只在`Debian13`平台上运行过，未在其余平台测试
 ## TODO
 
 - [x] 线性代数
