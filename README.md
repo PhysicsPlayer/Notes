@@ -14,26 +14,35 @@
 ## 编译指南
 1. 首先克隆该仓库
 	```
-	git clone https://github.com/Physicsplayer/Notes.git
+	git clone https://github.com/Physicsplayer/Notes.git && cd Notes
 	```
 	或者
 	```
-	git clone https://gitee.com/Physicsplayer/Notes.git
+	git clone https://gitee.com/Physicsplayer/Notes.git && cd Notes
 	```
 
 2. 调用`xelatex`连续编译两次即可，推荐在[Visual Studio Code](https://code.visualstudio.com/)中借助[LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop)插件辅助编译。
 
 3. 也可以在终端中调用编译脚本编译
+
+	对于`Linux/MacOS`
 	```
-	./build.sh  # For Linux/MacOS
-	.\build.ps1 # For Windows
+	./build.sh
+	```
+	对于`Windows`
+	```
+	.\build.ps1
 	```
 	编译后可以调用清理脚本删除辅助文件
+	对于`Linux/MacOS`
 	```
-	./clean.sh  # For Linux/MacOS
-	.\clean.ps1 # For Windows
+	./clean.sh
 	```
-	> PS:所有脚本均由AI生成，本人对运行结果不符任何责任，请仔细阅读脚本后再运行。所有脚本只在`Debian13`平台上运行过，未在其余平台测试
+	对于`Windows`
+	```
+	.\clean.ps1
+	```
+	> PS:所有脚本均由AI生成，本人对运行结果不符任何责任，请仔细阅读脚本后再运行。所有脚本只在`Debian13`平台上运行过，未在其余平台测试。本人使用`TexLive2025`，其余发行版未做测试。
 ## TODO
 
 - [x] 线性代数

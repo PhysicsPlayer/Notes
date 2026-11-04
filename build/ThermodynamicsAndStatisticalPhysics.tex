@@ -1,6 +1,13 @@
 \documentclass[../main.tex]{subfiles}
+\ifSubfilesClassLoaded{\cover{../Figure/cover.jpg}}{}
+\ifSubfilesClassLoaded{\title{热力学与统计物理学}}{}
+
 
 \begin{document}
+\ifSubfilesClassLoaded{\maketitle}{}
+\ifSubfilesClassLoaded{\frontmatter}{}
+\ifSubfilesClassLoaded{\tableofcontents}{}
+\ifSubfilesClassLoaded{\mainmatter}{}
 
 \subfile{../Part/ThermodynamicsAndStatisticalPhysics/热统在干什么.tex}
 

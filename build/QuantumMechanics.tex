@@ -1,6 +1,13 @@
 \documentclass[../main.tex]{subfiles}
+\ifSubfilesClassLoaded{\cover{../Figure/cover.jpg}}{}
+\ifSubfilesClassLoaded{\title{量子力学}}{}
+
 
 \begin{document}
+\ifSubfilesClassLoaded{\maketitle}{}
+\ifSubfilesClassLoaded{\frontmatter}{}
+\ifSubfilesClassLoaded{\tableofcontents}{}
+\ifSubfilesClassLoaded{\mainmatter}{}
 
 \subfile{../Part/QuantumMechanics/观念的转变.tex}
 

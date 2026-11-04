@@ -1,6 +1,14 @@
 \documentclass[../main.tex]{subfiles}
+\ifSubfilesClassLoaded{\cover{../Figure/cover.jpg}}{}
+\ifSubfilesClassLoaded{\title{微分几何}}{}
+
 
 \begin{document}
+\ifSubfilesClassLoaded{\maketitle}{}
+\ifSubfilesClassLoaded{\frontmatter}{}
+\ifSubfilesClassLoaded{\tableofcontents}{}
+\ifSubfilesClassLoaded{\mainmatter}{}
+
 \subfile{../Part/DifferentialGeometry/DifferentialGeometry.tex}
 
 \end{document}

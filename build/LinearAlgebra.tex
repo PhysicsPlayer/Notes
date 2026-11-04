@@ -1,6 +1,14 @@
 \documentclass[../main.tex]{subfiles}
+\ifSubfilesClassLoaded{\cover{../Figure/cover.jpg}}{}
+\ifSubfilesClassLoaded{\title{线性代数}}{}
+
 
 \begin{document}
+\ifSubfilesClassLoaded{\maketitle}{}
+\ifSubfilesClassLoaded{\frontmatter}{}
+\ifSubfilesClassLoaded{\tableofcontents}{}
+\ifSubfilesClassLoaded{\mainmatter}{}
+
 \subfile{../Part/LinearAlgebra/LinearAlgebra.tex}
 
 \end{document}
