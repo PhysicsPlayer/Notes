@@ -32,3 +32,9 @@ latexmk -xelatex -interaction=nonstopmode -halt-on-error \
   "$root_dir/main.tex"
 
 printf 'Compilation completed.\n'
+printf 'Generated PDFs:\n'
+for part_file in "${part_files[@]}"; do
+  part_name="$(basename "$part_file" .tex)"
+  printf '%s\n' "$build_dir/$part_name.pdf"
+done
+printf '%s\n' "$root_dir/main.pdf"

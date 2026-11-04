@@ -41,3 +41,8 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "Compilation completed." -ForegroundColor Green
+Write-Host "Generated PDFs:"
+foreach ($partFile in $partFiles) {
+    Write-Host (Join-Path $buildDir "$($partFile.BaseName).pdf")
+}
+Write-Host (Join-Path $rootDir "main.pdf")
