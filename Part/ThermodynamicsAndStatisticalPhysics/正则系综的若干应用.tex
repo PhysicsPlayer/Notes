@@ -5,7 +5,7 @@
 
 \section{经典理想气体}
 
-\subsection{单原子分子}
+\subsection{单粒子配分函数}
 本节开始我们讨论如何用正则系综的手段处理经典理想气体。我们先讨论最简单的情形，即假设理想气体分子是单原子分子，只考虑它的平动。经典理想气体是满足非简并条件的，因此它的配分函数是\(Z=\frac{1}{N!}Z_1^{N}\)。利用求和计算单粒子配分函数是不行的，读者可以自行尝试，最后得到的求和式没有初等解，要依赖积分近似计算，因此我们一开始就使用态密度来计算单粒子配分函数。
 
 单个理想气体分子的能级公式为\(E_{n_x,n_y,n_z}=\frac{\hbar^2\pi^2(n_x^2+n_y^2+n_z^2)}{2mL^2}\)，粗略地认为能级间隔为\(\Delta E\approx \frac{\hbar^2\pi^2}{2mL^2}\)，那么高温条件是
@@ -34,72 +34,64 @@
 \end{equation}
 这样的态密度是关于波矢大小的。前文我们已经讲述过，态密度表示一定范围内的量子态个数，这个范围可以用不同的变量标记，不同的态密度之间通过自变量的函数关系进行变换。由\(k=\sqrt{\frac{2mE}{\hbar^2}}\)不难得到关于能量的态密度
 \begin{equation}
-    g(E)\dd E=g(k)\dd k=\frac{Vk^2}{2\pi^2}\dd k=\frac{V}{2\pi^2}\frac{2mE}{\hbar^2}\sqrt{\frac{m}{2\hbar^2E}}\dd E
+    g(E)\dd E=g(k)\dd k=\frac{Vk^2}{2\pi^2}\dd k=\frac{V}{2\pi^2}\frac{2mE}{\hbar^2}\sqrt{\frac{2m}{\hbar^2}}\frac{1}{2\sqrt{E}}\dd E=\frac{V}{4\pi^2}\left(\frac{2m}{\hbar^2}\right)^{\frac{3}{2}}\sqrt{E}\dd E
 \end{equation}
-我们不再进一步化简，不难看出\(g(E)\propto\sqrt{E}\)，也就是说可以认为简并度随能级的变化大致\footnote{不要细究具体的变化规律，从图\ref{fig:box-degeneracy}中可以看到简并度随能级是忽上忽下的，只有一个整体趋势}是抛物线形状。这正是我们在图\ref{fig:box-degeneracy}中猜出来的结论，那里我们利用数值计算，从图中看出了抛物线的趋势。
+显然\(g(E)\propto\sqrt{E}\)，也就是说可以认为简并度随能级的变化大致\footnote{不要细究具体的变化规律，从图\ref{fig:box-degeneracy}中可以看到简并度随能级是忽上忽下的，只有一个整体趋势}是抛物线形状。这正是我们在图\ref{fig:box-degeneracy}中猜出来的结论，那里我们利用数值计算，从图中看出了抛物线的趋势。
 
-鉴于\(g(E)\dd E\)的表达式比较复杂，我们使用\(g(k)\dd k\)计算单粒子配分函数，即
+有了态密度，我们就可以计算单粒子配分函数了
 \begin{equation}
-    Z_1=\int_0^{\infty}g(E)\mathrm{e}^{-\beta E}\dd E=\int_0^{\infty}g(k)\mathrm{e}^{-\beta\frac{\hbar^2k^2}{2m}}\dd k
+    Z_1=\int_0^{\infty}g(E)\e^{-\beta E}\dd E=\frac{V}{4\pi^2}\left(\frac{2m}{\hbar^2}\right)^{\frac{3}{2}}\int_0^{\infty}\sqrt{E}\e^{-\beta E}\dd E \xlongequal{x=\beta E}\frac{V}{4\pi^2}\left(\frac{2m}{\hbar^2\beta}\right)^{\frac{3}{2}}\int_0^{\infty}x^{\frac{1}{2}}\e^{-x}\dd x
 \end{equation}
-带入具体的表达式可得
+根据\(\Gamma\)函数的性质，上式最后的积分为
 \begin{equation}
-    Z_1=\frac{V}{2\pi^2}\int_0^{\infty}k^2\mathrm{e}^{-\frac{\beta\hbar^2}{2m}k^2}\dd k=\frac{V}{2\pi^2}\frac{\sqrt{\pi}}{4}\left(\frac{2m}{\beta\hbar^2}\right)^{\frac{3}{2}}=\frac{V}{\hbar^3}\left(\frac{m\k T}{2\pi}\right)^{\frac{3}{2}}
+    \int_0^{\infty}x^{\frac{1}{2}}\e^{-x}\dd x=\Gamma\left(\frac{3}{2}\right)=\frac{1}{2}\Gamma\left(\frac{1}{2}\right)=\frac{\sqrt{\pi}}{2}
 \end{equation}
-计算中涉及的积分将由下面的例题给出。
-\begin{example}
-    计算\(\int_0^{\infty}x^2\mathrm{e}^{-\alpha x^2}\dd x\)
-    \begin{solution}
-        将高斯积分\(\int_0^{\infty}\mathrm{e}^{-\alpha x^2}\dd x=\frac{1}{2}\sqrt{\frac{\pi}{\alpha}}\)的左右两边对\(\alpha\)求导，则有
-        \begin{equation}
-            -\int_0^{\infty}x^2\mathrm{e}^{-\alpha x^2}\dd x=-\frac{1}{4}\sqrt{\pi}\alpha^{-\frac{3}{2}}
-        \end{equation}
-        化简则得
-        \begin{equation}
-            \int_0^{\infty}x^2\mathrm{e}^{-\alpha x^2}\dd x=\frac{\sqrt{\pi}}{4}\alpha^{-\frac{3}{2}}
-        \end{equation}
-    \end{solution}
-\end{example}
+这一结果非常友好，它使单粒子配分函数可以写成很紧凑的形式
+\begin{equation}
+    Z_1=\frac{V}{(4\pi)^{\frac{3}{2}}}\left(\frac{2m}{\hbar^2\beta}\right)^{\frac{3}{2}}=V\left(\frac{m\k T}{2\pi\hbar^2}\right)^{\frac{3}{2}}
+\end{equation}
 
-单粒子配分函数是无量纲的，那么\(\frac{1}{\hbar^3}\left(\frac{m\k T}{2\pi}\right)^{\frac{3}{2}}\)就具有粒子数密度的量纲，我们称其为量子密度\(n_{\text{Q}}\)，也就是说
+单粒子配分函数是无量纲的，那么\(\left(\frac{m\k T}{2\pi\hbar^2}\right)^{\frac{3}{2}}\)就具有粒子数密度的量纲，我们称其为量子密度\(n_{\text{Q}}\)，也就是说
 \begin{equation}
-    Z_1=Vn_{\text{Q}}\qquad n_{\text{Q}}=\frac{1}{\hbar^3}\left(\frac{m\k T}{2\pi}\right)^{\frac{3}{2}}
+    Z_1=Vn_{\text{Q}}\qquad n_{\text{Q}}=\left(\frac{m\k T}{2\pi\hbar^2}\right)^{\frac{3}{2}}
 \end{equation}
 既然\(n_{\text{Q}}\)具有粒子数密度的量纲，那么\(\lambda_{\text{th}}=n_{\text{Q}}^{-\frac{1}{3}}\)就是长度的量纲，我们称其为热波长，这样配分函数还可以写成
 \begin{equation}
-    Z_1=\frac{V}{\lambda_{\text{th}}^3}\qquad \lambda_{\text{th}}=\hbar\sqrt{\frac{2\pi}{m\k T}}
+    Z_1=\frac{V}{\lambda_{\text{th}}^3}\qquad \lambda_{\text{th}}=\left(\frac{m\k T}{2\pi\hbar^2}\right)^{-\frac{1}{2}}
 \end{equation}
 在巨正则系综部分我们会看到，经典理想气体满足非简并条件的本质就是
 \begin{equation}
     \frac{Z_1}{N}\gg 1 \quad\text{或者说}\quad  n\ll n_{\text{Q}} \quad\text{或者说}\quad n\lambda_{\text{th}}^3\ll 1
 \end{equation}
+不难看出\footnote{此处使用了经典理想气体的物态方程\(pV=N\k T\)，读者自然不陌生，但在目前的讨论进度下，我们还未得到该表达式，我们将在下一小节导出该式}，\(n\lambda_{\text{th}}^3\propto nT^{-\frac{3}{2}}\propto pT^{-\frac{5}{2}}\)，这个量远小于1意味着温度足够高或者压强足够小，这正是我们在热力学中对经典理想气体的要求。由此也能看出，当我们说一个气体系统足够稀薄以至于可以被看成经典理想气体时，既可以指系统的粒子数密度很小也可以指系统的温度很高。
+
 有意思的是，当理想气体满足非简并条件时，其一定满足高温条件。我们把非简并条件的两边取\(\frac{2}{3}\)次幂，可得
 \begin{equation}
-    T\gg\frac{2\pi\hbar^2N^{\frac{2}{3}}}{mL^2\k}
+    T\gg\frac{2\pi\hbar^2}{m\k}\left(\frac{N}{V}\right)^{\frac{2}{3}}
 \end{equation}
-将上式与高温条件的右式作比可得
+将上式右端与高温条件\(T\gg \frac{\hbar^2\pi^2}{2m\k}\left(\frac{1}{V}\right)^{\frac{2}{3}}\)的右端作比可得
 \begin{equation}
-    \frac{2\pi\hbar^2N^{\frac{2}{3}}}{mL^2\k}\frac{2mL^2\k}{\hbar^2\pi^2}=\frac{4N^{\frac{2}{3}}}{\pi}\gg 1\Longrightarrow \frac{2\pi\hbar^2N^{\frac{2}{3}}}{mL^2\k}\gg \frac{\hbar^2\pi^2}{2mL^2\k}
+    \frac{2\pi\hbar^2}{m\k}\left(\frac{N}{V}\right)^{\frac{2}{3}}\frac{2m\k}{\hbar^2\pi^2}V^{\frac{2}{3}}=\frac{4N^{\frac{2}{3}}}{\pi}\gg 1\Longrightarrow \frac{2\pi\hbar^2}{m\k}\left(\frac{N}{V}\right)^{\frac{2}{3}}\gg \frac{\hbar^2\pi^2}{2m\k}\left(\frac{1}{V}\right)^{\frac{2}{3}}
 \end{equation}
-可以看到，对于经典理想气体，它能被看成经典理想气体这一物理模型上的近似比计算单粒子配分函数时把求和变成积分这一数学近似手段更重要。实际上后文我们处理量子理想气体时，非简并条件已不再满足，但我们还会使用把求和变积分这一数学近似。
-
-经典理想气体的单粒子配分函数为\(Z_1=\frac{V}{\hbar^3}\left(\frac{m\k T}{2\pi}\right)^{\frac{3}{2}}\)，系统满足非简并条件，这给出如下的配分函数
+可以看出，对于经典理想气体，它能被看成经典理想气体这一物理模型上的近似比计算单粒子配分函数时把求和变成积分这一数学近似手段更重要。实际上后文我们处理量子理想气体时，非简并条件已不再满足，但我们还会使用把求和变积分这一数学近似。
+\subsection{单原子分子气体的热力学量}
+经典理想气体的单粒子配分函数为\(Z_1=V\left(\frac{m\k T}{2\pi\hbar^2}\right)^{\frac{3}{2}}\)，系统满足非简并条件，这给出如下的配分函数
 \begin{equation}
-    Z=\frac{1}{N!}\frac{V^N}{\hbar^{3N}}\left(\frac{m\k T}{2\pi}\right)^{\frac{3N}{2}}
+    Z=\frac{V^N}{N!}\left(\frac{m\k T}{2\pi\hbar^2}\right)^{\frac{3N}{2}}
 \end{equation}
 从配分函数出发求偏导就能得到各热力学量，这是纯粹的数学计算，希望读者自己尝试形成自己的风格。笔者更喜欢把所有的运算转移到单粒子配分函数上。我们先计算系统的内能
 \begin{equation}
     \begin{split}
-        U=-\pdv{\ln Z}{\beta}=-N\pdv{\ln Z_1}{\beta}&=-N\pdv{\beta}\left(\frac{3}{2}\ln\frac{m}{2\pi\beta}\right) \\
-        &=\frac{3}{2}N\pdv{\beta}\left(\ln\frac{2\pi\beta}{m}\right) \\
+        U=-\pdv{\ln Z}{\beta}=-N\pdv{\ln Z_1}{\beta}&=-N\pdv{\beta}\left(\frac{3}{2}\ln\frac{1}{\beta}\right) \\
+        &=\frac{3}{2}N\pdv{\ln\beta}{\beta} \\
         &=\frac{3}{2}N\k T=\frac{3}{2}nRT
     \end{split}
 \end{equation}
-这一结果是毫无意外地，显然定容热容为\(C_V=\frac{3}{2}nR\)。为计算别的热力学量，可以先计算出系统的特性函数自由能，也可以直接通过配分函数计算，两种方法没有本质区别，笔者更喜欢依赖配分函数的计算。系统的压强由下式给出
+这一结果是毫无意外的，显然定容热容为\(C_V=\frac{3}{2}nR\)。为计算别的热力学量，可以先计算出系统的特性函数自由能，也可以直接通过配分函数计算，两种方法没有本质区别，笔者更喜欢依赖配分函数的计算。系统的压强由下式给出
 \begin{equation}
     p=-\left(\pdv{F}{V}\right)_{N,T}=N\k T\pdv{\ln Z_1}{V}=\frac{N\k T}{V}=\frac{nRT}{V}
 \end{equation}
-这正是理想气体状态方程。接着计算理想气体的熵，因为\(\frac{1}{N!}\)的修正，我们预期得到的熵是广延量
+这正是理想气体状态方程。接着计算理想气体的熵\footnote{计算熵最简单的方式是\(\displaystyle S=\frac{U-F}{T}=\frac{3}{2}N\k+\k\ln Z=\k\left(\frac{3}{2}N+N\ln Z_1-N\ln N+N\right)=N\k\left[\frac{5}{2}+\ln(\frac{Z_1}{N})\right]\)}，因为\(\frac{1}{N!}\)的修正，我们预期得到的熵是广延量
 \begin{equation}
     \begin{split}
         S=-\left(\pdv{F}{T}\right)_{N,V}=\pdv{(\k T\ln Z)}{T}&=\k(N\ln Z_1-N\ln N+N)+N\k T\pdv{\ln Z_1}{T} \\
@@ -126,7 +118,7 @@
     \pdv{E}{V}=\sum_r \pdv{E_r}{V}n_r=-\frac{2}{3V}\sum_r E_rn_r=-\frac{2E}{3V}
 \end{equation}
 神奇的事出现了，对上式求系综平均就能得到
-\begin{equation}
+\begin{equation}\label{eq:非相对论压强内能关系}
     p=\expval{-\pdv{E}{V}}=\frac{2\expval{E}}{3V}=\frac{2}{3}u
 \end{equation}
 因为我们考虑的系综中系统体积是恒定不变的，所以体积可以直接提出期望运算。这是一个很有意思的结论，有意思在我们使用的条件很少。统计的部分即取系综平均时，我们没有涉及任何具体的系综类型，这意味着上式对任何系综都适用，这并不意外，不同系综给出的结论本应相同。关键在于我们只使用了系统能量等于各粒子能量和这一条件，对于任何近独立系统这都成立，无论粒子本身是否可分辨，这意味着上述结论对于经典理想气体成立也对不可分辨的量子理想气体成立。上一章我们已经明确了正则系综处理不可分辨系统有数学困难，在巨正则系综部分，我们能简便地处理玻色气体和费米气体，我们会再一次看到这一关系式。当然，我们使用的自由粒子能级公式建立在非相对论的基础上，对于极端相对论粒子，这是不适用的，在本章的最后我们会简单讨论极端相对论自由粒子的统计力学。
@@ -141,7 +133,7 @@
     \end{split}
 \end{equation}
 上式中取对数的\(\frac{Z_1}{N}=\frac{Vn_{\text{Q}}}{N}=\frac{n_{\text{Q}}}{n}\gg 1\)，因此经典理想气体化学势为负，这也是可以预见的。根据热力学基本微分方程\(\dd U=T\dd S-p\dd V+\mu\dd N\)可得\(\mu=\left(\pdv{U}{N}\right)_{S,V}\)。我们假想两个经典理想气体\footnote{这意味着气体的温度足够高，巨正则系综部分我们会研究费米理想气体，它的低温化学势是正的}系统\(A\)和\(B\)，两者的熵和体积完全相同而\(B\)系统比\(A\)系统多一个粒子。倘若两个系统能量相等，因为\(B\)系统多一个粒子，它的微观状态数会更多即熵更大\footnote{上一章我们计算过经典理想气体的微观状态数，读者可定量分析一下}，但我们要求两个系统的熵相同，因此\(B\)系统的能量一定要小于\(A\)系统，所以化学势必然是负的。
-\subsection{双原子气体的热容}
+\subsection{双原子分子气体的热容}
 
 本节我们要扩展我们的研究对象，研究更复杂的气体分子，双原子分子。原子物理课程学习过双原子分子的振转光谱，所以对于双原子分子，我们要考虑它的平动、振动和转动。我们的统计依旧从单粒子配分函数开始。为了让我们能够继续讨论这个话题，我们要假设双原子分子的这三种运动是相互独立的，也就是说双原子分子的平动不会改变它的转动、转动不会改变它的振动等等。仿照上一章组合配分函数的思路\footnote{从这些推导中读者应该能感受到，对于系统的不同成分，配分函数是这些成分的乘积，而热力学量的广延性要求结果是各成分的和，因此对配分函数取对数才可以得到热力学量是不意外的}，我们可以把单粒子配分函数拆成三个子配分函数。
 
@@ -341,7 +333,7 @@
 \begin{equation}\label{eq:平衡辐射的内能密度}
     u=\frac{U}{V}=\int_0^{\infty}\frac{\hbar}{\pi^2c^3}\frac{\omega^3}{\mathrm{e}^{\beta\hbar\omega}-1}\dd\omega\xlongequal{\beta\hbar\omega=x}\frac{\hbar}{\pi^2c^3}\frac{1}{(\beta\hbar)^4}\int_0^{\infty}\frac{x^3}{\mathrm{e}^x-1}\dd x=\frac{\pi^2\k^4}{15\hbar^3c^3}T^4
 \end{equation}
-上式用到了积分公式\footnote{该积分被称为玻色积分，结果中的\(\displaystyle \zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}\)即黎曼函数，\(\zeta(4)=\frac{\pi^4}{90}\)}
+上式用到了积分公式即所谓的玻色积分\footnote{玻色积分结果中的\(\displaystyle \zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}\)即黎曼函数，\(\zeta(4)=\frac{\pi^4}{90}\)}
 \begin{equation}
     \int_0^{\infty}\frac{x^n}{\mathrm{e}^x-1}\dd x=\zeta(n+1)\Gamma(n+1)
 \end{equation}
@@ -436,15 +428,15 @@
 普朗克提出的黑体分布公式\footnote{读者有兴趣可以阅读一下普朗克于1901年发表的论文《On the Law of Distribution of Energy in the Normal Spectrum》，感受一下普朗克是如何在量子力学和系综统计没有建立之前推出这个惊人的公式}有很大的实践意义，十九世纪的技术进步和工业界的新需求推动着人们对黑体辐射的研究，最终这一问题被普朗克解决，也推开了量子力学的大门。有意思的是，约半个世纪后人们在浩瀚星空中又发现了黑体分布的身影。美国新泽西州贝尔实验室的两位科学家偶然间发现天空中来自各个方向的似乎均匀的微波辐射，这个辐射的分布与温度为\(2.7\mathrm{K}\)的黑体分布\footnote{室温黑体对应\(10\mathrm{\mu m}\)，不难算出\(2.7\mathrm{K}\)的黑体对应\(1\mathrm{mm}\)，这对应电磁波谱的微波波段}高度吻合，后续的实验表明这个辐射的各向同性异常好，这一辐射被称为宇宙微波背景辐射，被认为是宇宙大爆炸理论的重要证据。不过笔者水平有限，不能在此展开详细分析，有兴趣的读者可查阅其他资料学习。
 
 \subsection{平衡辐射的化学势}
-前两节导出的结论都是热力学理论给不出来的，在本节的最后，我们用统计物理手段给出两个热力学中已有的结论。它是如此地重要以至于我们在这里要再次讲述。
+前两小节导出的结论都是热力学理论给不出来的，在本节的最后，我们用统计物理手段导出一个热力学中已有的结论，它是如此地重要以至于我们在这里要再次讲述。
 
 热力学虽然给不出斯特藩-玻尔兹曼常量的值，但给出了许多热力学关系。平衡辐射的熵为\(S=\frac{16\sigma}{3c}T^3V=\frac{4U}{3T}\)，由此可得吉布斯自由能为
 \begin{equation}
     G=U-TS+pV=U-\frac{4}{3}U+\frac{1}{3}U=0
 \end{equation}
-即平衡辐射的吉布斯自由能为0。此外根据\(p=\frac{u}{3}=\frac{4\sigma}{3c}T^4\)即压强和体积无关，可得\(\left(\pdv{p}{V}\right)_T=0\)，也就是说电磁辐射的等温压缩系数\(\kappa_T=-\frac{1}{V}\left(\pdv{V}{p}\right)_T\)是发散的。第\ref{sec:光子气体}节，我们把电磁辐射看作光子气体，会再次讨论这两个关系式。
+即平衡辐射的吉布斯自由能为0。用统计的手段计算吉布斯自由能，出发点是特性函数亥姆霍兹自由能，由\(G=F+pV\)我们还需要计算出压强。读者很快会看到，我们并不需要算出具体的表达式就能得到结果。
 
-统计力学也能给出这两个结论。由平衡辐射的配分函数\eqref{eq:平衡辐射配分函数}可得，其自由能为
+由平衡辐射的配分函数\eqref{eq:平衡辐射配分函数}可得，其自由能为
 \begin{equation}
     F=-\k T\sum_{\text{所有模式}}\left[-\frac{1}{2}\beta\hbar\omega-\ln(1-\mathrm{e}^{-\beta\hbar\omega})\right]
 \end{equation}
@@ -452,7 +444,7 @@
 \begin{equation}
     F=V\frac{\k T}{\pi^2c^3}\int_0^{\infty}\ln(1-\mathrm{e}^{-\frac{\hbar\omega}{\k T}})\omega^2\dd\omega
 \end{equation}
-无需计算上述积分的结果，我们可以直接得到\(F\propto V\)即
+无需计算上述积分的结果，我们可以直接得到\(F\propto V\)，所以
 \begin{equation}
     p=-\left(\pdv{F}{V}\right)_{N,T}=-\frac{F}{V}
 \end{equation}
@@ -460,11 +452,10 @@
 \begin{equation}
     G=F+pV=0
 \end{equation}
-根据\(F\propto V\)可得\(p=-\frac{F}{V}\)与体积无关，也就是等温压缩系数发散。
 
 与吉布斯自由能绑定的另一个热力学量即化学势，它表示单粒子吉布斯自由能，显然平衡辐射的化学势\footnote{有读者可能认为平衡辐射的简正模式数为无穷，粒子数就是无穷，因此化学势为0。笔者认为这种想法并不恰当，因为平衡辐射的粒子数本身就没有定义，只是统计力学计算时把每个简正模式视作了一个谐振子}为0。第\ref{sec:光子气体}节我们会用到光子的化学势为0，不过我们将从另一个角度说明这一事实。
 
-\section{固体热容理论}
+\section{固体热容理论}\label{sec:固体热容理论}
 从本节开始，我们要学习如何计算固体或者说晶体的热容。在统计物理发展史上，这是继黑体分布之后量子力学和统计理论融合而产生的第二个成功理论。晶体中的原子因为强烈的相互作用只能在其平衡位置附近做微振动\footnote{在晶格动力学中原子做微振动被称为间谐近似，对于我们讨论的热容理论，间谐近似是足够的。在别的理论里就可能要考虑原子振动的非简谐效应。容易想到当温度过高以致固体融化时，简谐近似显然就不合理了，换句话说我们认为在所考虑的温度下，晶体的微观整体结构不会改变，温度变化只是影响原子振动的强弱而不会导致原子之间解离}，我们关注的就是这一微振动，也就是说我们关注各原子微振动的能量而不是整个固体的能量。各原子构成一个整体而形成晶体，因此它们的微振动是相互耦合的，不可能是独立的，也就是我们要考虑相互作用能，这就为我们的统计带来了困难。
 
 幸运的是，我们马上会证明，经典力学视角下，利用简正坐标，我们能把系统的能量写成各独立谐振子的能量和，各个独立谐振子的频率正是固体的简正频率。量子力学中，采用类似的方法我们也能证明系统的能量是独立谐振子的能量和，不过谐振子的能量已是量子化的。这意味着我们不再处理每个原子的振动，而是关注系统的简正模式。每一个简正模式都对应一个独立的谐振子，其频率正是该简正模式的频率。读者不难发现，我们的理论和平衡辐射的统计理论非常相似\footnote{这种相似启发我们提出类似光子的概念——声子，我们将在巨正则系综部分介绍它}，但是由于固体本身的复杂性，第一性地解析计算固体的简正频率是不可能的，因此我们往往采用两种近似模型，分别是爱因斯坦模型和德拜模型。我们的课程将从一个纯力学的观念出发，再过渡到对两个模型的具体求解。
@@ -631,16 +622,28 @@
 \begin{equation}
     \begin{split}
         C_V&=9N\k\left(\frac{T}{\theta_{\mathrm{D}}}\right)^3\Bigg[\int_0^{\infty}\frac{y^4\mathrm{e}^{y}}{(\mathrm{e}^{y}-1)^2}\dd y-\int_{\frac{\theta_{\mathrm{D}}}{T}}^{\infty}\frac{y^4\mathrm{e}^{y}}{(\mathrm{e}^{y}-1)^2}\dd y\Bigg] \\
-        &\approx9N\k\left(\frac{T}{\theta_{\mathrm{D}}}\right)^3\int_0^{\infty}\frac{y^4\mathrm{e}^{y}}{(\mathrm{e}^{y}-1)^2}\dd y \\
-        &=9N\k\left(\frac{T}{\theta_{\mathrm{D}}}\right)^3\frac{4\pi^4}{15} \\
-        &=\frac{12\pi^4}{5}N\k \left(\frac{T}{\theta_{\mathrm{D}}}\right)^3
+        &\approx9N\k\left(\frac{T}{\theta_{\mathrm{D}}}\right)^3\int_0^{\infty}\frac{y^4\mathrm{e}^{y}}{(\mathrm{e}^{y}-1)^2}\dd y
     \end{split}
 \end{equation}
-上式用到了积分公式
+上式遇到的积分可以查阅积分表获得解，不过它可以通过前文的玻色积分计算，请读者参考下列例题。
+\begin{example}
+    计算\(\displaystyle \int_0^{\infty}\frac{x^n\e^{x}}{(\e^{x}-1)^2}\dd x\)
+    \begin{solution}
+        \begin{equation}
+            \begin{split}
+                \int_0^{\infty}\frac{x^n\e^{x}}{(\e^{x}-1)^2}\dd x&=-\int_0^{\infty}x^n\dd(\frac{1}{\e^x-1}) \\
+                &=-\eval{\frac{x^n}{\e^x-1}}_{0}^{\infty}+n\int_0^{\infty}\frac{x^{n-1}}{\e^x-1}\dd x \\
+                &=n\zeta(n)\Gamma(n)
+            \end{split}
+    \end{equation}
+    上式的运算默认了\(n\neq1\)，这样才能保证分部积分产生的常数项为0，同时也保证了第二项玻色积分本身不发散。当\(n=1\)时读者可用换元法计算\(\int_0^{\infty}\frac{1}{\e^x-1}\dd x\)，它确实是发散的，玻色积分公式\(\int_0^{\infty}\frac{x^n}{\mathrm{e}^x-1}\dd x=\zeta(n+1)\Gamma(n+1)\)中\(n=0\)得到\(\zeta(1)\)即调和级数，也说明了积分发散。
+    \end{solution}
+\end{example}
+对于\(n=4\)，利用\(\zeta(4)=\frac{\pi^4}{90}\)可得
 \begin{equation}
-    \int_0^{\infty}\frac{x^n\mathrm{e}^{x}}{(\mathrm{e}^x-1)^2}=n\zeta(n)\Gamma(n)
+    C_V=9N\k\left(\frac{T}{\theta_{\mathrm{D}}}\right)^3\frac{4\pi^4}{15}=\frac{12\pi^4}{5}N\k \left(\frac{T}{\theta_{\mathrm{D}}}\right)^3
 \end{equation}
-这也是一个特殊积分，读者可查阅积分表得到。不难看出，低温时\(C_V\propto T^3\)，这被称为德拜\(T^3\)定律。对于很多固体\footnote{主要是非金属固体}，其在低温下的行为均符合德拜\(T^3\)定律。有意思的是，我们之前接触的大多统计模型在低温时与实验相差较大，而德拜模型反过来，温度越低德拜模型越符合实验。这是因为低温时固体的热容主要由低频简正频率主导，而这部分简正频率和弹性波的简正频率很符合，至于很符合的原因，读者会在固体物理课程学习。
+不难看出，低温时\(C_V\propto T^3\)，这被称为德拜\(T^3\)定律。对于很多固体\footnote{主要是非金属固体}，其在低温下的行为均符合德拜\(T^3\)定律。有意思的是，我们之前接触的大多统计模型在低温时与实验相差较大，而德拜模型反过来，温度越低德拜模型越符合实验。这是因为低温时固体的热容主要由低频简正频率主导，而这部分简正频率和弹性波的简正频率很符合，至于很符合的原因，读者会在固体物理课程学习。
 
 除了低温极限，整体上德拜模型也和实验数据吻合较好。一个检验德拜模型准确性的简单方法是，根据实验测得的温度和热容，从式\eqref{eq:德拜热容}中数值计算解出德拜温度，画出这一德拜温度随温度的变化。理论上倘若德拜模型完全准确，那么得到的将是一条水平线\footnote{读者可能会疑惑，即使德拜模型的频谱是真实频谱，德拜温度作为波速和体积的函数，在不同温度下本应不同，为什么理论上德拜温度不变。原因在于德拜模型属于热容理论的一种，而我们的热容理论假定了原子做微振动即间谐近似，读者在固体物理中将学习不考虑非简谐效应德拜温度就是定值}，但实际上只在极低温时该曲线是水平的，随着温度升高，曲线开始变形，因为德拜模型毕竟是近似理论。对于微观结构复杂的晶体，德拜模型偏差较大，因为它的简正频率会很复杂。不过很多情形下，鉴于德拜模型非常简单，仍不失为一个优秀的近似理论。
 \begin{figure}[H]
@@ -833,7 +836,7 @@
 我们考虑绝热过程，那么显然有\(VT^3\)不变，结合物态方程\(T\propto pV\)可得\(pV^{\frac{4}{3}}\)不变，所以极端相对论气体的绝热指数是\(\frac{4}{3}\)，不同于\footnote{读者计算一下电磁辐射的绝热指数，也是\(\frac{4}{3}\)}非相对论气体的\(\frac{5}{3}\)。
 
 对比内能公式和压强公式，两者满足如下关系
-\begin{equation}
+\begin{equation}\label{eq:非简并极端相对论粒子压-内关系}
     p=\frac{U}{3V}=\frac{1}{3}u
 \end{equation}
 这和非相对论情形的\(p=\frac{2}{3}u\)不同。前文我们已经讨论过，\(p=\frac{2}{3}u\)的证明依赖于非相对论粒子的能级公式。有趣的是，电磁辐射的压强也满足\(p=\frac{u}{3}\)，后文会看到，这是必然的。
